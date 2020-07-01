@@ -17,6 +17,35 @@ function getCats() {
 
 	}
 }
+function cart(){
+  global $con;
+  
+  if(isset($_GET['add_cart'])){
+	  
+	  $product_id = $_GET['add_cart'];
+	  
+	  $ip = get_ip();
+	  
+	  $run_check_pro = mysqli_query($con,"select * from cart where product_id='$product_id'");
+	
+	  if(mysqli_num_rows($run_check_pro) > 0){
+	     echo "";
+	  }else{
+	    
+		$fetch_pro = mysqli_query($con, "select * from products where product_id='$product_id'");
+		
+		$fetch_pro = mysqli_fetch_array($fetch_pro);
+		
+		$pro_title = $fetch_pro['product_title'];
+		
+        $run_insert_pro = mysqli_query($con, "insert into cart (product_id,product_title,ip_address) values ('$product_id','$pro_title','$ip') ");		
+	    
+		
+		echo "<script>window.open('sanpham.php','_self')</script>";
+	    
+	  }
+	}
+}
 function getThucPham()
 {
 	global $con;
@@ -49,7 +78,7 @@ function total_items(){
 	
 	$ip = get_ip();
 
-	$run_items = mysqli_query($con,"select * from cart where ip_address='$ip' ");
+	$run_items = mysqli_query($con,"SELECT * from cart where ip_address ='$ip' ");
 	
 	echo $count_items = mysqli_num_rows($run_items);
 }
@@ -62,13 +91,13 @@ function total_price(){
    
    $ip = get_ip();
    
-   $run_cart = mysqli_query($con, "select * from cart where ip_address='$ip' ");
+   $run_cart = mysqli_query($con, "SELECT * from cart where ip_address='$ip' ");
    
    while($fetch_cart = mysqli_fetch_array($run_cart)){
        
 	   $product_id = $fetch_cart['product_id'];
 	   
-	   $result_product = mysqli_query($con, "select * from product where product_id = '$product_id'");
+	   $result_product = mysqli_query($con, "SELECT * from product where product_id = '$product_id'");
 	   
        while($fetch_product = mysqli_fetch_array($result_product)){
                 

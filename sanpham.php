@@ -136,16 +136,7 @@ include('function.php');
 	</div>
 </div>
 <?php 
-if(isset($_GET['add_cart']))
-{
-	$product_id = $_GET['add_cart'];
-		//$run_check_pro = mysqli_query($con,"SELECT * FROM cart where procduct_id ='$product_id'");
-	$ip =get_ip();
-	$fetch_pro = mysqli_query($con,"SELECT * FROM product where product_id = '$product_id' ");
-	$fetch_pro = mysqli_fetch_array($fetch_pro);
-	$pro_title = $fetch_pro['product_title'];
-	$run_insert_pro = mysqli_query($con, "INSERT into cart (product_id,product_title,ip_address) values ('$product_id','$pro_title','$ip','')");
-}
+	cart();
 ?>
 <hr>
 <br>
