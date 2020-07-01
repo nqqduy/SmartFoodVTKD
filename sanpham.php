@@ -144,7 +144,7 @@ if(isset($_GET['add_cart']))
 	$fetch_pro = mysqli_query($con,"SELECT * FROM product where product_id = '$product_id' ");
 	$fetch_pro = mysqli_fetch_array($fetch_pro);
 	$pro_title = $fetch_pro['product_title'];
-	$run_insert_pro = mysqli_query($con, "INSERT into cart (product_id,product_title,ip_address,quality) values ('$product_id','$pro_title','$ip','')");
+	$run_insert_pro = mysqli_query($con, "INSERT into cart (product_id,product_title,ip_address) values ('$product_id','$pro_title','$ip','')");
 }
 ?>
 <hr>
