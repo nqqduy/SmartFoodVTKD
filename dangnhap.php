@@ -12,48 +12,22 @@ include('db.php');
 	<link rel="stylesheet" href="vendor/bootstrap.css">
 	<link rel="stylesheet" href="vendor/font-awesome.css">
 	<link rel="stylesheet" href="1.css">
-	<link href="https://fonts.googleapis.com/css2?family=Pridi:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" type="text/javascript" charset="utf-8" async defer></script>
 </head>
 <body >
-	<div class="banner_dangnhap">
-		<nav class="navbar navbar-dark bg-inverse navbar-fixed-top tren">
-			<button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
-				&#9776;
-			</button>
-			<div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-				<a class="navbar-brand logo" href="#">SMART FOOD COURT SYSTEM</a>
-				<ul class="nav navbar-nav float-sm-right trenphai">
-					<li class="nav-item ">
-						<a class="nav-link" href="index.php">Trang chủ <span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item ">
-						<a class="nav-link" href="sanpham.php">Sản phẩm</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="quanly.php">Quản lý</a>
-					</li>
-					<li class="nav-item ">
-						<a class="nav-link" href="dangxuat.php">Đăng xuất</a>
-					</li>
-				</ul>
-			</div>
-		</nav>	
-	</div>
 	<br>
-	<br>
-
-	<br>
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-3">				
-				<a href="index.php">Trang chủ</a> >> Đăng nhập
-			</div>
+<br>
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-3">				
+			<a href="index.php">Trang chủ</a> >> Đăng nhập
 		</div>
 	</div>
-	<hr>
+</div>
 
-	<div class="container">
-		<h1 style="text-align: center;">ĐĂNG NHẬP</h1>
+<div class="container">
+	<h1 style="text-align: center;">ĐĂNG NHẬP</h1>
 			<!-- // <?php //if(isset($alert)):?>
 		<section class="alert alert-danger">
 			<?=$alert?>	
@@ -85,34 +59,36 @@ include('db.php');
 	<br>
 	<br>
 	<?php 
-	include("footer.php");
+ 	if(isset($_POST['login'])){
 
-	?>
-	<?php 
-	if(isset($_POST['login'])){
-		$email =  $_POST['email'];
-		$password =  trim($_POST['password']);
+		$email = trim($_POST['email']);
+		$password = trim($_POST['password']);
 		$password = md5($password);
 
+		$run_login = mysqli_query($con, "select * from users where password='$password' AND email='$email' " );
 
-		$run_login =mysqli_query($con, "SELECT * from users where password = '$password' AND email = '$email'");
 		$check_login = mysqli_num_rows($run_login);
-		 $row_login = mysqli_fetch_array($run_login);
-		if($check_login == 0)
-		{
-			echo "<script> alert('mật khẩu hoặc email không đúng, vui lòng nhập lại')</script>";
+
+		$row_login = mysqli_fetch_array($run_login);
+
+		if($check_login == 0){
+			echo "<script>alert('Password or email is incorrect, please try again!')</script>";
 			exit();
 		}
+		$ip = get_ip();
+
 		$run_cart = mysqli_query($con, "select * from cart where ip_address='$ip'");
+
 		$check_cart = mysqli_num_rows($run_cart);
-		if($check_login > 0 && $check_cart == 0){
+
+		if($check_login > 0 AND $check_cart == 0){
 
 			$_SESSION['user_id'] = $row_login['id'];
 
 			$_SESSION['role'] = $row_login['role'];
 
 			$_SESSION['email'] = $email;
-			echo "<script>alert('Đã đăng nhập thành công!')</script>";
+			echo "<script>alert('You have logged in successfully !')</script>";
 			echo "<script>window.open('taikhoan.php','_self')</script>";
 
 		}else{
@@ -122,9 +98,11 @@ include('db.php');
 
 			$_SESSION['email'] = $email;
 			echo "<script>alert('You have logged in successfully !')</script>";
-			echo "<script>window.open('thanhtoan.php','_self')</script>";
+			echo "<script>window.open('checkout.php','_self')</script>";
 		}
+
 	}
-	?>
+
+?>
 </body>
 </html>

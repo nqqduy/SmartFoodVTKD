@@ -1,5 +1,5 @@
 <div id="footer" class="fixed-bottom"><!-- #footer Begin -->
-    <div class="container"><!-- container Begin -->
+    <div class="container-fluid"><!-- container Begin -->
         <div class="row"><!-- row Begin -->
             <div class="col-sm-6 col-md-3"><!-- col-sm-6 col-md-3 Begin -->
                

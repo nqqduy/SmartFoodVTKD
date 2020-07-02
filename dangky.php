@@ -1,6 +1,8 @@
 
 <?php 
 include('db.php');
+include('function.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en"><head>
@@ -80,6 +82,8 @@ include('db.php');
 			<label for="uname"><b>Name</b></label>
 			<input type="text" placeholder="VD: Nguyễn Văn A" name="name" required>
 
+			<label for="avartar"><b>Ảnh đại diện: </b></label>
+			<input type="file" name="image"/> <br>
 
 			<label for="psw"><b>Email</b></label>
 			<input type="text" name="email" placeholder="VD : vana@hcmut.edu.vn" required>
@@ -89,6 +93,7 @@ include('db.php');
 
 			<label for="psw"><b>Confirm password</b></label>
 			<input type="password" name="confirm_password" id="confirm_password2" placeholder="Enter Password" required>
+
 			<p id = "confirm_password"></p>
 
 			<button type="submit" name="register"value ="Register"class="btn btn-success">ĐĂNG KÝ</button>			
@@ -113,34 +118,72 @@ include('db.php');
 	?>
 
 	<?php 
-	if(isset($_POST['register'])){
+	if(isset($_POST['register'])){  
 
-		if(!empty($_POST['email']) &&!empty($_POST['password']) && !empty($_POST['confirm_password']) && !empty($_POST['name']))
-		{
-
-			//$ip = get_ip();
+		if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm_password']) && !empty($_POST['name'])){
+			$ip = get_ip();
 			$name = $_POST['name'];
 			$email = trim($_POST['email']);
 			$password = trim($_POST['password']);
 			$hash_password = md5($password);
 			$confirm_password = trim($_POST['confirm_password']);
 
-			$check_exist = mysqli_query($con,"SELECT * FROM   users  WHERE email = '$email' ");
+			$image = $_FILES['image']['name'];
+			$image_tmp = $_FILES['image']['tmp_name'];
+
+			$check_exist = mysqli_query($con,"select * from users where email = '$email'");
+
 			$email_count = mysqli_num_rows($check_exist);
 
-			if($email_count > 0)
-			{
-					echo "<script> alert('Xin lỗi, email $email của bạn đã tồn tại trong hệ thống, vui lòng nhập email khác !')</script>";		
-			}
-			else {
-				$run_insert = mysqli_query($con, "INSERT into users (name,email,password) values ('$name','$email','$hash_password')");
+			$row_register = mysqli_fetch_array($check_exist);
+
+			if($email_count > 0){
+				echo "<script>alert('Sorry, email $email đã có trong hệ thống !')</script>";
+
+			}else if($row_register['email'] !=$email && $password == $confirm_password ){
+
+				move_uploaded_file($image_tmp,"img/$image");
+
+				$run_insert = mysqli_query($con,"insert into users (ip_address,name,email,password,image) values ('$ip','$name','$email','$hash_password','$image') ");
+
+				if($run_insert){
+					$sel_user = mysqli_query($con,"select * from users where email='$email' ");
+					$row_user = mysqli_fetch_array($sel_user);
+
+					$_SESSION['user_id'] = $row_user['id'] ."<br>";
+					$_SESSION['role'] = $row_user['role'];	
+				}
+
+				$run_cart = mysqli_query($con,"select * from cart where ip_address='$ip'");
+
+				$check_cart = mysqli_num_rows($run_cart);
+
+				if($check_cart == 0){
+
+					$_SESSION['email'] = $email;
+
+					echo "<script>alert('Tài khoản tạo thành công')</script>";
+
+					echo "<script>window.open('taikhoan.php','_self')</script>";
+
+				}else{
+
+					$_SESSION['email'] = $email;
+
+					echo "<script>alert('Tài khoản tạo thành công')</script>";
+
+					echo "<script>window.open('checkout.php','_self')</script>";
+
+				}
 
 			}
 
 		}
+
 	}
-	
-?>
+
+	?>
+
 	
 </body>
 </html>

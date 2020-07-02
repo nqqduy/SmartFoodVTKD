@@ -40,91 +40,101 @@ include("db.php");
 	<div class="chitiet" style="text-align: center;">
 		<div class="container">
 			<div class="row">
-				<?php
-				$total = 0;
+				<form action="" method="post" enctype="multipart/form-data">
+					<table align="center" width="100%">
+						<tr align="center">
+							<th class="xoa" style="padding: 15px; text-align: center;"> 
+								<h4>Xóa</h4>
+							</th>
+							<th class="sanpham" style="text-align: center; padding: 15px;"><h4>Sản phẩm</h4></th>
+							<th style="padding-left: 19px; padding: 15px; width: 100%;"><h4 style="text-align:center; 	">Số lượng</h4></th>
+							<th class="col-sm-3"  style="padding: 15px;"><h4>Giá</h4></th>
+						</tr>
+						<?php 
+						$total = 0;
 
-				$ip = get_ip();
+						$ip = get_ip();
 
-				$run_cart = mysqli_query($con, "SELECT * from cart where ip_address='$ip' ");
+						$run_cart = mysqli_query($con, "select * from cart where ip_address='$ip' ");
 
-				while($fetch_cart = mysqli_fetch_array($run_cart)){
+						while($fetch_cart = mysqli_fetch_array($run_cart)){
 
-					$product_id = $fetch_cart['product_id'];
+							$product_id = $fetch_cart['product_id'];
 
-					$result_product = mysqli_query($con, "SELECT * from product where product_id = '$product_id'");
+							$result_product = mysqli_query($con, "select * from product where product_id = '$product_id'");
 
-					while($fetch_product = mysqli_fetch_array($result_product)){
+							while($fetch_product = mysqli_fetch_array($result_product)){
 
-						$product_price = array($fetch_product['product_gia']);
+								$product_price = array($fetch_product['product_gia']);
 
-						$product_title = $fetch_product['product_title'];
+								$product_title = $fetch_product['product_title'];
 
-						$product_image = $fetch_product['product_image'];
+								$product_image = $fetch_product['product_image'];
 
-						$sing_price = $fetch_product['product_gia'];
+								$sing_price = $fetch_product['product_gia'];
 
-						$values = array_sum($product_price);
+								$values = array_sum($product_price);
 
-						$run_qty = mysqli_query($con, "select * from cart where product_id = '$product_id'");
 
-						$row_qty = mysqli_fetch_array($run_qty);
+								$run_qty = mysqli_query($con, "select * from cart where product_id = '$product_id'");
 
-						$qty = $row_qty['quality'];
+								$row_qty = mysqli_fetch_array($run_qty);
 
-						$values_qty = $values * $qty;
+								$qty = $row_qty['quality'];
 
-						$total += $values_qty;
-						?>
-						<div class="_soluongsanpham mt-3">
-							<div class="container">
-								<div class="row">
-									<div class="col-sm-3">
-										<h4 style="text-align:center;">Xóa</h4>
-										<div class="xoa" style="text-align:center";>
-											<input type="checkbox" name="remove[]" value="">
-										</div>
-									</div>
-									<div class="col-sm-3">
-										<h4 style="text-align:center;"><?php echo $product_title; ?></h4>
-										<br>
-										<img style="width: 100px; height: 100px;"src="img/<?php echo $product_image; ?>" alt="">
-									</div>
-									<div class="col-sm-3">
-										<h4 style="text-align:center;">Số lượng</h4>
-										<div class="xoa" style="text-align:center;">
-											<input type="text1" size="4"name="qty" value="" style="height: 20px; ">
-										</div>
-									</div>
-									<div class="col-sm-3">
-										<h4 style="text-align:center;">Giá</h4>
+								$values_qty = $values * $qty;
 
-									</div>
-								</div>
-							</div>
+								$total += $values_qty;
+
+								?>
+								<tr align="center" class="col-sm-3 push-sm-6">
+									<td><input type="checkbox" name="remove[]" value="<?php echo $product_id;?>" /></td>
+									<td style="color:green;">
+										<?php echo $product_title;?>
+										<br />
+										<img style="
+										width: 154px;
+										height: 126px;  padding: 15px;
+										"src="img/<?php echo $product_image; ?> " />
+									</td>
+
+									<td><input type="text1" size="4" name="qty" value="<?php echo $qty; ?>" /></td>
+									<td><?php echo $sing_price;?> VNĐ</td>
+								</tr>								
+							<?php } } // End While  ?> 	
+
+							<tr align="right">
+								<td style="display: block; padding: 20px;"><input type="submit" name="update_cart" value="Cập nhật lại giỏ" style="color:blue;" /></td>
+								<td><button style="width: 100px;"><a href="checkout.php" style="text-decoration: none; color:red;">Thanh toán</a></td>
+								</tr>
+							</table>					
+						</form>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 push-sm-6 mt-1">
+							<h4 style="color:red;"> Tổng cộng: <?php echo total_price(); ?></h4>
 						</div>
-					<?php } } ?>
-				</div>
-			</div>
-		</div>
-		<br>
-		<hr>
-		<div class="_chitie" style="text-align:center;">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-3">
-						<input type="submit" name="update_cart" value="Update Cart" />
-					</div>
-					<div class="col-sm-3">
-						<input type="submit" name="continue" value="Continue Shopping" />
-					</div>
-					<div class="col-sm-3">
-						<button><a href="checkout.php">Checkout</a></button>
 					</div>
 				</div>
-			</div>
-		</div>
-		<br>
-		br
-		<?php include('footer.php') ?>
-	</body>
-	</html>
+				<br>
+				<hr>				
+				<?php 
+				if(isset($_POST['remove'])){
+
+					foreach($_POST['remove'] as $remove_id){
+
+						$run_delete = mysqli_query($con,"delete from cart where product_id = '$remove_id' AND ip_address='$ip' ");
+
+						if($run_delete){
+							echo "<script>window.open('cart.php','_self')</script>";
+						}
+					}
+
+				}
+
+				?>
+				<br>
+				<?php include('footer.php') ?>
+
+			</body>
+			</html>

@@ -126,7 +126,7 @@ function total_price(){
        }	   
    }
    
-   echo "$total VNĐ";
+   echo " $total VNĐ";
    
 }
 ?>

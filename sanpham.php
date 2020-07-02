@@ -72,11 +72,18 @@ include('function.php');
 				</li>
 			</ul>
 		</div>
+
+
 	</div>
+
 </div>
 </div>
 <br>
-
+<div class="container">
+	<div class="col-sm-3">
+		<a href="cart.php"><button type="button" class="btn btn-link"> <i class="fa fa-shopping-cart" style="font-size:20px;">Quản lý giỏ hàng</i></button></a>
+	</div>
+</div>
 <div class="content_wrapper">
 	<div id="sidebar" >
 		<div id="sidebar_title">Menu</div>
@@ -136,7 +143,7 @@ include('function.php');
 	</div>
 </div>
 <?php 
-	cart();
+cart();
 ?>
 <hr>
 <br>
