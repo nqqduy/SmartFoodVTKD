@@ -32,6 +32,9 @@ include('function.php');
 					<li class="nav-item">
 						<a class="nav-link" href="quanly.php">Quản lý</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="taikhoan.php">Tài khoản</a>
+					</li>	
 					<li class="nav-item ">
 						<a class="nav-link" href="dangxuat.php">Đăng xuất</a>
 					</li>

@@ -3,6 +3,9 @@
   padding: 0;
   font-family: 'Pridi';
 }
+li {
+     list-style: none;
+}
 .text.bk{
   margin-top: 38px!important;
 }
@@ -50,39 +53,39 @@ html,body{
 
 }
 #sidebar{
-   width:200px;
-   background:#399dcad1;
-   float:left;
-   height:auto;
+ width:200px;
+ background:red;
+ float:left;
+ height:auto;
 }
 #sidebar_title{
-   background:white;
-   color:black;
-   font-size:22px;
-   font-family:arial;
-   padding:10px;
-   text-align:center;
+ background:white;
+ color:black;
+ font-size:22px;
+ font-family:arial;
+ padding:10px;
+ text-align:center;
 }
 #cats{
-   text-align:center;
+ text-align:center;
 }
 #cats li{
-   list-style:none;
-   margin:5px;
+ list-style:none;
+ margin:5px;
 }
 #cats a{
-   color:white;
-   padding:8px;
-   margin:5px;
-   text-align:center;
-   font-size:20px;
-   text-decoration:none;
+ color:white;
+ padding:8px;
+ margin:5px;
+ text-align:center;
+ font-size:20px;
+ text-decoration:none;
 }
 #cats a:hover{
-    transition: 0.7s;
-   color:blue;
-   font-weight:bolder;
-   text-decoration:underline;
+  transition: 0.7s;
+  color:blue;
+  font-weight:bolder;
+  text-decoration:underline;
 }
 .cart .noti_cart_number{
   background:red;
@@ -164,7 +167,7 @@ html,body{
  }
 }
 @media (max-width:576px){
-  .navbar a{
+  .navbar a {
     font-size:15px;
   }
   .banner1 .logo1{
@@ -202,6 +205,25 @@ html,body{
  .duy1 {
    float:left;
  }
+ #total { /*cart.php tông tien ở dưới*/
+  padding-top:30px;
+  width: 600px;
+  text-align: right; }
+  ._ten{
+    width: 172px;
+  }
+  ._email
+  {
+    width: 128px;
+  }
+  ._email2 {
+    width: 50px;
+  }
+  #_info 
+  {
+    text-align: center;
+    width: 100%;
+  }
 }
 @media (max-width:375px)
 {
@@ -298,5 +320,53 @@ input[type=text], input[type=password] {
 button:hover {
   opacity: 0.8;
 }
+/*css cho cart.php*/
+#_tien {
+  color: red;
+  display: block;
+  width: 200px;
+  height: 150px;
+  margin-top:45%;
+}
+#_gia {
+  padding: 15px;
+  text-align: center;
+}
+#soluong {
+ padding: 50px;
+ text-align: center;
+ display: inline-block;
+ width: 
+}
+.soluong {  
+  width: 114px;
+}
+#Cap_Nhap {
+  display: block;
 
+  text-align: center;
+}
+.sanpham {
+  padding-left: 30px;
+}
+#sanpham {
+  width: 200px;
+  margin-left: 20%;
+}
+#_quanly {/* tiêu đề quản lý giỏ hàng của bạn*/
+  width: 400px;
+}
+#total { /*cart.php tông tien ở dưới*/
+  padding-top:30px;
+  width: 600px;
+  text-align: right;
+}
+/* ------ Hết cart.php -----*/
 
+/*css cho taikhoan.php*/
+._ten1 {
+  width: 126px;
+}
+.cc {
+  text-align: left;
+}

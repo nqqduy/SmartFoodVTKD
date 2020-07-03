@@ -1,6 +1,7 @@
 
 <?php 
 include('db.php');
+include('function.php');
 ?>
 <!DOCTYPE html>
 <html lang="en"><head>

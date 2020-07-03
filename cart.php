@@ -28,7 +28,7 @@ include("db.php");
 	<div class="giohang">
 		<div class="container">
 			
-			<h3>QUẢN LÝ GIỎ HÀNG CỦA BẠN</h3>
+			<h3 id ="_quanly">QUẢN LÝ GIỎ HÀNG CỦA BẠN</h3>
 			<br>
 			<h6>Tổng cộng mặt hàng đã đặt: <?php total_items(); ?></h6>
 			<br>
@@ -40,15 +40,15 @@ include("db.php");
 	<div class="chitiet" style="text-align: center;">
 		<div class="container">
 			<div class="row">
-				<form action="" method="post" enctype="multipart/form-data">
+				<form action="" method="post" enctype="multipart/form-data" class="bang1">
 					<table align="center" width="100%">
 						<tr align="center">
 							<th class="xoa" style="padding: 15px; text-align: center;"> 
 								<h4>Xóa</h4>
 							</th>
-							<th class="sanpham" style="text-align: center; padding: 15px;"><h4>Sản phẩm</h4></th>
-							<th style="padding-left: 19px; padding: 15px; width: 100%;"><h4 style="text-align:center; 	">Số lượng</h4></th>
-							<th class="col-sm-3"  style="padding: 15px;"><h4>Giá</h4></th>
+							<th class="sanpham"><h4 id ="sanpham">Sản phẩm</h4></th>
+							<th  id="soluong"><h4 class="soluong">Số lượng</h4></th>
+							<th class="col-sm-3" id="_gia"><h4>Giá</h4></th>
 						</tr>
 						<?php 
 						$total = 0;
@@ -87,34 +87,33 @@ include("db.php");
 								$total += $values_qty;
 
 								?>
-								<tr align="center" class="col-sm-3 push-sm-6">
+								<tr align="center" class="col-sm-3">
 									<td><input type="checkbox" name="remove[]" value="<?php echo $product_id;?>" /></td>
 									<td style="color:green;">
-										<?php echo $product_title;?>
-										<br />
+										<h4><?php echo $product_title;?></h4>
 										<img style="
-										width: 154px;
-										height: 126px;  padding: 15px;
+										width: 205px;
+										height: 160px;  padding: 15px;
 										"src="img/<?php echo $product_image; ?> " />
 									</td>
 
 									<td><input type="text1" size="4" name="qty" value="<?php echo $qty; ?>" /></td>
-									<td><?php echo $sing_price;?> VNĐ</td>
+									<td id="_tien"><?php echo $sing_price;?> VNĐ</td>
 								</tr>								
 							<?php } } // End While  ?> 	
 
-							<tr align="right">
-								<td style="display: block; padding: 20px;"><input type="submit" name="update_cart" value="Cập nhật lại giỏ" style="color:blue;" /></td>
-								<td><button style="width: 100px;"><a href="checkout.php" style="text-decoration: none; color:red;">Thanh toán</a></td>
+							<tr class="Cap_Nhap_Va_Thanh_Toan">
+								<td></td>
+								<td></td>
+								<td id="Cap_Nhap"><input type="submit" name="update_cart" value="Cập nhật lại giỏ" style="color:blue;" /></td>
+								<td id = "Thanh_Toan"><button style="width: 100px;"><a href="checkout.php" style="text-decoration: none; color:red;">Thanh toán</a></td>
 								</tr>
 							</table>					
 						</form>
 					</div>
-					<div class="row">
-						<div class="col-sm-6 push-sm-6 mt-1">
-							<h4 style="color:red;"> Tổng cộng: <?php echo total_price(); ?></h4>
-						</div>
-					</div>
+					
+					<h4 style="color:red;" id="total"> Tổng cộng: <?php echo total_price(); ?></h4>
+					
 				</div>
 				<br>
 				<hr>				
@@ -134,7 +133,9 @@ include("db.php");
 
 				?>
 				<br>
-				<?php include('footer.php') ?>
-
-			</body>
-			</html>
+			</div>
+		</div>
+		<?php include('footer.php') ?>
+	</div>
+</body>
+</html>

@@ -33,14 +33,9 @@ include("db.php");
 					<li class="nav-item">
 						<a class="nav-link" href="quanly.php">Quản lý</a>
 					</li>
-					<?php if(!isset($_SESSION['user_id'])){ ?>
-
-
-					<?php }else { ?>
-						<div>
-							I'am an lam
-						</div>
-					<?php } ?>
+					<li class="nav-item">
+						<a class="nav-link" href="taikhoan.php">Tài khoản</a>
+					</li>					
 					<li class="nav-item ">
 						<a class="nav-link" href="dangxuat.php">Đăng xuất</a>
 					</li>
