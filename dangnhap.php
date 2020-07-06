@@ -78,30 +78,32 @@ include('function.php');
 		}
 		$ip = get_ip();
 
-		$run_cart = mysqli_query($con, "select * from cart where ip_address='$ip'");
+		$_SESSION['user_id'] = $row_login['id'];
 
-		$check_cart = mysqli_num_rows($run_cart);
+		$_SESSION['role'] = $row_login['role'];
 
-		if($check_login > 0 AND $check_cart == 0){
+		$_SESSION['email'] = $email;
 
-			$_SESSION['user_id'] = $row_login['id'];
+		// echo "<script>".strcmp($_SESSION['role'],"admin")."<script>";
+		if (strcmp($_SESSION['role'],"admin")!=0){
+			$run_cart = mysqli_query($con, "select * from cart where ip_address='$ip'");
 
-			$_SESSION['role'] = $row_login['role'];
+			$check_cart = mysqli_num_rows($run_cart);
 
-			$_SESSION['email'] = $email;
-			echo "<script>alert('You have logged in successfully !')</script>";
-			echo "<script>window.open('taikhoan.php','_self')</script>";
+			if($check_login > 0 AND $check_cart == 0){
+				echo "<script>alert('You have logged in successfully !')</script>";
+				echo "<script>window.open('taikhoan.php','_self')</script>";
 
-		}else{
-			$_SESSION['user_id'] = $row_login['id'];
-
-			$_SESSION['role'] = $row_login['role'];
-
-			$_SESSION['email'] = $email;
-			echo "<script>alert('You have logged in successfully !')</script>";
-			echo "<script>window.open('checkout.php','_self')</script>";
+			}else{
+				echo "<script>alert('You have logged in successfully !')</script>";
+				echo "<script>window.open('checkout.php','_self')</script>";
+			}
 		}
-
+		else{
+			echo "login_success";
+            echo "<script> location.href='admin/add_product.php'; </script>";
+            exit;
+		}
 	}
 
 ?>

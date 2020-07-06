@@ -71,7 +71,8 @@ CREATE TABLE `product` (
   `product_title` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `product_gia` int(100) NOT NULL,
   `product_mota` text COLLATE utf8_unicode_ci NOT NULL,
-  `product_image` text COLLATE utf8_unicode_ci NOT NULL
+  `product_image` text COLLATE utf8_unicode_ci NOT NULL,
+  `product_keywords` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -125,6 +126,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`) VALUES
+(1, 'admin', 'admin@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'admin'),
 (17, 'an lam', 'vios.tee97@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 'guest');
 
 --

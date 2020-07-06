@@ -21,7 +21,7 @@ include('function.php');
 				&#9776;
 			</button>
 			<div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-				<a class="navbar-brand logo" href="#">SMART FOOD COURT SYSTEM</a>
+				<a class="navbar-brand logo" href="index.php">SMART FOOD COURT SYSTEM</a>
 				<ul class="nav navbar-nav float-sm-right trenphai">
 					<li class="nav-item ">
 						<a class="nav-link" href="index.php">Trang chủ <span class="sr-only">(current)</span></a>
@@ -29,9 +29,9 @@ include('function.php');
 					<li class="nav-item ">
 						<a class="nav-link" href="sanpham.php">Sản phẩm</a>
 					</li>
-					<li class="nav-item">
+					<!-- <li class="nav-item">
 						<a class="nav-link" href="quanly.php">Quản lý</a>
-					</li>
+					</li> -->
 					<li class="nav-item active">
 						<a class="nav-link" href="taikhoan.php">Tài khoản</a>
 					</li>	

@@ -30,9 +30,9 @@ include("db.php");
 					<li class="nav-item">
 						<a class="nav-link" href="sanpham.php">Sản phẩm</a>
 					</li>
-					<li class="nav-item">
+					<!-- <li class="nav-item">
 						<a class="nav-link" href="quanly.php">Quản lý</a>
-					</li>
+					</li> -->
 					<li class="nav-item">
 						<a class="nav-link" href="taikhoan.php">Tài khoản</a>
 					</li>					
