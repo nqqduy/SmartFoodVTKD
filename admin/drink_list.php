@@ -6,7 +6,7 @@ if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
 {
 $product_id=$_GET['product_id'];
 ///////picture delete/////////
-$result=mysqli_query($con,"select product_image from product where product_id='$product_id")
+$result=mysqli_query($con,"select product_image from product where product_id='$product_id'")
 or die("query is incorrect...");
 
 list($picture)=mysqli_fetch_array($result);
