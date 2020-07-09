@@ -15,8 +15,6 @@
 
 <div class="collapse navbar-collapse">
 <ul class="nav navbar-nav navbar-right">
-<li class="dropdown ">
-<a href="#">Cài đặt</a></li>
         <li><a href=".././dangxuat.php">Đăng xuất</a></li>
 	</ul>
 	  </div><!-- /.navbar-collapse -->

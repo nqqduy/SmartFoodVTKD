@@ -22,10 +22,7 @@
     <li><a href="food_list.php"><strong>Đồ ăn</strong> </a></li>
  <li><a href="drink_list.php"><strong> Thức uống</strong></a></li>
    </ul></li>
-
- 
-
-<li><button style="width:240px; height:50px" type="button" class="btn btn-default btn-primary" onClick="location.href='manage_users.php'"> <span class="glyphicon glyphicon-edit pull-left"></span> Quản lý tài khoản </button></li>	
+<li><button style="width:240px; height:50px" type="button" class="btn btn-default btn-primary" onClick="location.href='manage_users.php'"> <span class="glyphicon glyphicon-edit pull-left"></span> Quản lý tài khoản </button></li>	  
 <li><button style="width:240px; height:50px" type="button" class="btn btn-default btn-danger" onClick="location.href='.././dangxuat.php'"><span class="glyphicon glyphicon-off pull-left">
 </span> Đăng xuất </button></li>
 			  </ul>

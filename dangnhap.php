@@ -34,7 +34,7 @@ include('function.php');
 			<?=$alert?>	
 		</section>	
 		<?php// endif; ?> -->
-		<form  method="post">
+		<form action="thanhtoan.php" method="post">
 			<label for="uname"><b>Email</b></label>
 			<input type="text" placeholder="Enter Email" name="email" required>
 
@@ -85,7 +85,9 @@ include('function.php');
 		$_SESSION['email'] = $email;
 
 		// echo "<script>".strcmp($_SESSION['role'],"admin")."<script>";
-		if (strcmp($_SESSION['role'],"admin")!=0){
+		if (strcmp($_SESSION['role'],"admin") >0){
+			
+			$_SESSION['email'] = $email;
 			$run_cart = mysqli_query($con, "select * from cart where ip_address='$ip'");
 
 			$check_cart = mysqli_num_rows($run_cart);
@@ -96,7 +98,7 @@ include('function.php');
 
 			}else{
 				echo "<script>alert('You have logged in successfully !')</script>";
-				echo "<script>window.open('checkout.php','_self')</script>";
+				echo "<script>window.open('thanhtoan.php','_self')</script>";
 			}
 		}
 		else{

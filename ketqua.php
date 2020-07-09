@@ -41,13 +41,15 @@ include('function.php')
 	</div>
 	<br>
 	<br>
-	<br>
-	<div class="ketqua">
-		<div class="container-fluid">
-			<div class="row">
-
-				
-				<div class="content_wrapper">
+	<br>		
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">				
+				<a href="sanpham.php">Quay về</a> >> Kết quả tìm kiếm
+			</div>
+		</div>
+	</div>		
+				<!-- <div class="content_wrapper">
 					<div id="sidebar">
 						<div id="sidebar_title">Menu</div>
 						<ul id="cats">
@@ -63,82 +65,85 @@ include('function.php')
 
 						</ul>
 					</div>
-				</div>
-				<div class="col-sm-3 push-sm-3">
-					<h3 style=" text-align: center; padding-right:20px;">KẾT QUẢ TÌM KIẾM</h>
+				</div> -->
+				<div class="container">
+					<div class="row">
+						<h2 style=" text-align: center; color:green; width: 100%;">KẾT QUẢ TÌM KIẾM</h2>
 					</div>
-					<br>
-					<br>
-					<?php 
-					$run = 0;
-					if(isset($_GET['search']))
-					{	
-
-						$search_query = $_GET['user_query'];
-						$get_proc = "SELECT * FROM  product where product_title like '%$search_query%'";
-						$run_pro = mysqli_query($con,$get_proc);
-
-						while($row_pro = mysqli_fetch_array($run_pro)) {
-							$run = 1;
-							$pro_id = $row_pro['product_id'];
-							$pro_cat = $row_pro['product_cat'];
-							$pro_loai = $row_pro['product_loai'];
-							$pro_title = $row_pro['product_title'];
-							$pro_price = $row_pro['product_gia'];
-							$pro_img = $row_pro['product_image'];
-							$pro_mota = $row_pro['product_mota'];
-							echo " 
-							<div class='col-sm-3 duy1' style='margin-top:4%;'>
-							<div class='card' style='width: 18rem; height:400px'>
-							<img class='card-img-top img-fluid' src='img/$pro_img' alt='Card image cap'style='width:100%; height:179px'>
-							<div class='card-body'>
-							<h5 class='card-title tieude' style='
-							text-align: center;
-							padding-top: 5%; font-size: 30px; color:red;
-							'>$pro_title</h5>
-							<p class='card-text'style='color:blue; font-size: 20px;'>$pro_mota</p>
-							<p style='font-size: 20px;'>Giá: $pro_price VNĐ</p>
-							<a href='sanpham.php?add_cat=$pro_id ' class='duy11'><button type='button' class='btn btn-success'> <i class='fa fa-shopping-cart'> Thêm vào giỏ </i></button></a>
-							</div>
-							</div>
-							</div>
-							";
-
-						}
-
-						if($run == 0)
-						{
-							echo " <div class='col-sm-3'>
-							<h3 style='margin-top:15%; width:100%'>Không có sản phẩm cần tìm, bạn tìm kiếm bằng cách VD bạn muốn tìm bánh mì: Bánh mì hoặc Bánh hoặc mì  </h3> 
-							<br>
-							<a href='sanpham.php' style='text-decoration: none;'><h3> Quay lại <h3></a>
-							</div>
-
-							";
-						}
-					}
-					?>
 				</div>
-			</div>
-		</div>
-	</div>
+				<br>
+				<br>
+				<div class="container">
+					<div class="row">
+						
+						<?php 
+						$run = 0;
+						if(isset($_GET['search']))
+						{	
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<?php 
-	include("footer.php");
-	?>
+							$search_query = $_GET['user_query'];
+							$get_proc = "SELECT * FROM  product where product_title like '%$search_query%'";
+							$run_pro = mysqli_query($con,$get_proc);
 
-</body>
-</html>
+							while($row_pro = mysqli_fetch_array($run_pro)) {
+								$run = 1;
+								$pro_id = $row_pro['product_id'];
+								$pro_cat = $row_pro['product_cat'];
+								$pro_loai = $row_pro['product_loai'];
+								$pro_title = $row_pro['product_title'];
+								$pro_price = $row_pro['product_gia'];
+								$pro_img = $row_pro['product_image'];
+								$pro_mota = $row_pro['product_mota'];
+								echo " 
+								<div class='col-sm-3 duy1' style='margin-top:4%;'>
+								<div class='card' style='width: 18rem; height:400px'>
+								<img class='card-img-top img-fluid' src='product_images/$pro_img' alt='Card image cap'style='width:100%; height:179px'>
+								<div class='card-body'>
+								<h5 class='card-title tieude' style='
+								text-align: center;
+								padding-top: 5%; font-size: 30px; color:red;
+								'>$pro_title</h5>
+								<p class='card-text'style='color:blue; font-size: 20px;'>$pro_mota</p>
+								<p style='font-size: 20px;'>Giá: $pro_price VNĐ</p>
+								<a href='sanpham.php?add_cat=$pro_id ' class='duy11'><button type='button' class='btn btn-success'> <i class='fa fa-shopping-cart'> Thêm vào giỏ </i></button></a>
+								</div>
+								</div>
+								</div>
+								<div class='col-sm-1'></div>
+								";
+
+							}
+
+							if($run == 0)
+							{
+								echo " <div class='row'>
+								<h3 style='margin-top:5%; width:100%; text-align:center;'>Không có sản phẩm cần tìm, bạn tìm kiếm bằng cách VD bạn muốn tìm bánh mì: Bánh mì hoặc Bánh hoặc mì  </h3> 
+								<br>
+								<a href='sanpham.php' style='text-decoration: none;'><h4> Quay lại <h4></a>
+								</div>
+
+								";
+							}
+						}
+						?>
+					</div>
+				</div>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<?php 
+				include("footer.php");
+				?>
+
+			</body>
+			</html>

@@ -52,7 +52,7 @@ include("db.php");
 					<div class="col-sm-8 push-sm-2 text-xs-center">
 						<img src="img/logo.png" alt="" class="logo1">
 						<h1>BACH KHOA SMART FOOD</h1>
-						<P>"Người thích ăn uống luôn luôn là những người tốt nhất" - Julia Child</p>
+						<P style="color:yellow;">"Người thích ăn uống luôn luôn là những người tốt nhất" - Julia Child</p>
 							<div class="register_login">
 							<a href="dangky.php" title=""><button type="button" class="btn btn-danger btn-lg" id="myBtn1">Đăng Ký</button></a>
 							<a href="dangnhap.php?action=login" title=""><button type="button" class="btn btn-default btn-lg" id="myBtn1">Đăng nhập</button></a>

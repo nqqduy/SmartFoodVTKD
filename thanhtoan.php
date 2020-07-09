@@ -52,7 +52,7 @@ include('db.php');
   <div class="content_wrapper">	  
 	    
 	  <?php 	  
-      if(!isset($_SESSION['user_id'])){
+      if(!isset($_SESSION['email'])){
 	     include('dangnhap.php');
 	  }else{
 	    include('payment.php');

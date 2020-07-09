@@ -25,7 +25,7 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 		$pic_name=time()."_".$picture_name;
 		move_uploaded_file($picture_tmp_name,"../product_images/".$pic_name);
 		
-mysqli_query($con," insert into product (product_cat, product_loai, product_title, product_gia, product_mota, product_image, product_keywords) values ('$product_cat','$product_brand','$product_title','$product_price','$product_desc','$pic_name','$product_keywords') ") or die ("query incorrect");
+mysqli_query($con," insert into product (product_cat, product_loai, product_title, product_gia, product_mota, product_image) values ('$product_cat','$product_brand','$product_title','$product_price','$product_desc','$pic_name') ") or die ("query incorrect");
 
  header("location: sumit_form.php?success=1");
 }
