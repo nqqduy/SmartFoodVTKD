@@ -1,5 +1,6 @@
 <?php 
 include("db.php");
+include("function.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,13 +29,20 @@ include("db.php");
 					<i class="fa fa-cc-paypal" style="color:red;"></i>
 					<i class="fa fa-credit-card" style="color:orange;"></i>
 				</div>
-			</div>		
-			
+			</div>					
 		</div>
 		<br>
+		<?php 
+			$ip = get_ip();
+			$get_customer = "SELECT * FROM users where ip_address = '$ip'";
+			$run_customer = mysqli_query($con,$get_customer);
+			$customer = mysqli_fetch_array($run_customer);
+			$customer_id = $customer['id'];
+
+		?>
 		<div class="row">
 			<div class="col-sm-4">
-				<a href="order.php" title=""><p style="text-decoration: none;font-size: 20px; color:green;">Thanh toán trong tài khoản</p></a>
+				<a href="order.php?c_id= <?php echo $customer_id ?>" title=""><p style="text-decoration: none;font-size: 20px; color:green;">Thanh toán trong tài khoản</p></a>
 			</div>
 		</div>
 	</div>

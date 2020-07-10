@@ -48,20 +48,24 @@ session_start();
 				</ul>
 			</div>
 		</nav>
-
-
-
-
 		<div class="banner1">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-8 push-sm-2 text-xs-center">
+					<div class="col-sm-8 push-sm-2 text-xs-center duyy">
 						<img src="img/logo.png" alt="" class="logo1">
 						<h1>BACH KHOA SMART FOOD</h1>
 						<P style="color:yellow;">"Người thích ăn uống luôn luôn là những người tốt nhất" - Julia Child</p>
 							<div class="register_login">
-								<a href="dangky.php" title=""><button type="button" class="btn btn-danger btn-lg" id="myBtn1">Đăng Ký</button></a>
-								<a href="dangnhap.php?action=login" title=""><button type="button" class="btn btn-default btn-lg" id="myBtn1">Đăng nhập</button></a>
+								<?php  
+								if(!isset($_SESSION['email']))
+								{
+									echo"<a href='dangky.php' title=''><button type='button' class='btn btn-danger btn-lg' id='myBtn1'>Đăng Ký</button></a>";
+									echo"<a href='dangnhap.php?action=login' title=''><button type='button' class='btn btn-default btn-lg' id='myBtn1'>Đăng nhập</button></a>";								
+								}
+								else {
+									echo"<p style='color:white; font-size:20px;'>Xin chào: ".$_SESSION['email']."</p";
+								}
+								?>
 							</div>
 						</div>
 					</div> <!-- het row -->

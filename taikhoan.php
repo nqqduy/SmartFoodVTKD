@@ -1,6 +1,7 @@
 <?php 
 include('db.php');
 include('function.php');
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en"><head>
@@ -34,6 +35,13 @@ include('function.php');
 					</li> -->
 					<li class="nav-item active">
 						<a class="nav-link" href="taikhoan.php">Tài khoản</a>
+					</li>
+					<li class="nav-item ">
+						<?php
+						if(isset($_SESSION['email'])){
+							echo"<a class='nav-link' href='dangxuat.php'>Đăng xuất</a>";
+						}
+						?>
 					</li>	
 				</ul>
 			</div>
@@ -81,7 +89,7 @@ include('function.php');
 
 					</div>
 				</div>
-		<div class="col-sm-2"> </div>
+				<div class="col-sm-2"> </div>
 				<div class="col-sm-5">
 					<div class="dichvu">
 						<div class="container">
@@ -128,10 +136,10 @@ include('function.php');
 	<div class="box">
 		<div class="container">
 			<?php 
-				if(isset($_GET['dat_hang'])) {
-					include("dat_hang.php");
-				}
-			 ?>
+			if(isset($_GET['dat_hang'])) {
+				include("dat_hang.php");
+			}
+			?>
 		</div>
 	</div>
 	<br>
