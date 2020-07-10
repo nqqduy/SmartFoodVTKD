@@ -1,6 +1,7 @@
 
 <?php 
 include("db.php");
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en"><head>
@@ -37,7 +38,12 @@ include("db.php");
 						<a class="nav-link" href="taikhoan.php">Tài khoản</a>
 					</li>					
 					<li class="nav-item ">
-						<a class="nav-link" href="dangxuat.php">Đăng xuất</a>
+						<?php
+						
+						if(isset($_SESSION['email'])){
+							echo"<a class='nav-link' href='dangxuat.php'>Đăng xuất</a>";
+						}
+						?>
 					</li>
 				</ul>
 			</div>
@@ -54,9 +60,9 @@ include("db.php");
 						<h1>BACH KHOA SMART FOOD</h1>
 						<P style="color:yellow;">"Người thích ăn uống luôn luôn là những người tốt nhất" - Julia Child</p>
 							<div class="register_login">
-							<a href="dangky.php" title=""><button type="button" class="btn btn-danger btn-lg" id="myBtn1">Đăng Ký</button></a>
-							<a href="dangnhap.php?action=login" title=""><button type="button" class="btn btn-default btn-lg" id="myBtn1">Đăng nhập</button></a>
-						</div>
+								<a href="dangky.php" title=""><button type="button" class="btn btn-danger btn-lg" id="myBtn1">Đăng Ký</button></a>
+								<a href="dangnhap.php?action=login" title=""><button type="button" class="btn btn-default btn-lg" id="myBtn1">Đăng nhập</button></a>
+							</div>
 						</div>
 					</div> <!-- het row -->
 				</div><!--  het container	 -->
@@ -293,7 +299,7 @@ include("db.php");
 				<br>
 				<p style="font-size: 20px; color:gray; text-align: center;" > Hình ảnh cửa hàng tại khu vực Bách Khoa TP. HCM </p> 
 			</div>
-			
+
 		</div>
 	</div>
 	<br>

@@ -16,7 +16,7 @@ li {
 html,body{
   width: 50%%;
   height: 100%;
-  background-color: #f1eff1!important;
+ /* background-color: #f1eff1!important;*/
 } 
 .banner {
   background-image: url(product_images/truong.jpg);

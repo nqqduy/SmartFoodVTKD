@@ -1,6 +1,7 @@
 <?php 
 include('db.php');
 include('function.php');
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en"><head>
@@ -36,7 +37,11 @@ include('function.php');
 						<a class="nav-link" href="taikhoan.php">Tài khoản</a>
 					</li>	
 					<li class="nav-item ">
-						<a class="nav-link" href="dangxuat.php">Đăng xuất</a>
+						<?php
+						if(isset($_SESSION['email'])){
+							echo"<a class='nav-link' href='dangxuat.php'>Đăng xuất</a>";
+						}
+						?>
 					</li>
 				</ul>
 			</div>

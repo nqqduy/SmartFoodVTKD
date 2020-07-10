@@ -35,9 +35,6 @@ include('function.php');
 					<li class="nav-item active">
 						<a class="nav-link" href="taikhoan.php">Tài khoản</a>
 					</li>	
-					<li class="nav-item ">
-						<a class="nav-link" href="dangxuat.php">Đăng xuất</a>
-					</li>
 				</ul>
 			</div>
 		</nav>	<!-- het menu -->
