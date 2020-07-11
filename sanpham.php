@@ -33,8 +33,12 @@ session_start();
 					<!-- <li class="nav-item">
 						<a class="nav-link" href="quanly.php">Quản lý</a>
 					</li> -->
-					<li class="nav-item">
-						<a class="nav-link" href="taikhoan.php">Tài khoản</a>
+					<li class="nav-item ">
+						<?php
+						if(isset($_SESSION['email'])){
+							echo"<a class='nav-link' href='taikhoan.php'>Tài khoản</a>";
+						}
+						?>
 					</li>	
 					<li class="nav-item ">
 						<?php

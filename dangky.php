@@ -2,7 +2,6 @@
 <?php 
 include('db.php');
 include('function.php');
-
 ?>
 <!DOCTYPE html>
 <html lang="en"><head>
@@ -78,7 +77,7 @@ include('function.php');
 			<?=$alert?>	
 		</section>	
 		<?php// endif; ?> -->
-		<form  method="post">
+		<form  method="post" enctype="multipart/form-data">
 			<label for="uname"><b>Name</b></label>
 			<input type="text" placeholder="VD: Nguyễn Văn A" name="name" required>
 
@@ -128,7 +127,7 @@ include('function.php');
 			$hash_password = md5($password);
 			$confirm_password = trim($_POST['confirm_password']);
 
-			$image = $_FILES['image']['name'];
+			$u_image = $_FILES['image']['name'];
 			$image_tmp = $_FILES['image']['tmp_name'];
 
 			$check_exist = mysqli_query($con,"select * from users where email = '$email'");
@@ -140,12 +139,13 @@ include('function.php');
 			if($email_count > 0){
 				echo "<script>alert('Sorry, email $email đã có trong hệ thống !')</script>";
 
-			}else if($row_register['email'] !=$email && $password == $confirm_password ){
+			}else if($row_register['email'] !=$email && $password == $confirm_password ){	
 
-				move_uploaded_file($image_tmp,"img/$image");
+				$run_insert1 ="INSERT into users (ip_address,name,email,password,image) values ('$ip','$name','$email','$hash_password','$u_image')";
 
-				$run_insert = mysqli_query($con,"insert into users (ip_address,name,email,password,image) values ('$ip','$name','$email','$hash_password','$image') ");
+				$run_insert = mysqli_query($con,$run_insert1);
 
+				move_uploaded_file($image_tmp,"product_images/$u_image");
 				if($run_insert){
 					$sel_user = mysqli_query($con,"select * from users where email='$email' ");
 					$row_user = mysqli_fetch_array($sel_user);
@@ -164,7 +164,7 @@ include('function.php');
 
 					echo "<script>alert('Tài khoản tạo thành công')</script>";
 
-					echo "<script>window.open('taikhoan.php','_self')</script>";
+					echo "<script>window.open('dangnhap.php','_self')</script>";
 
 				}else{
 

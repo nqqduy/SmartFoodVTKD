@@ -34,8 +34,12 @@ session_start();
 						<a class="nav-link" href="quanly.php">Quản lý</a>
 					</li> -->
 					<li class="nav-item active">
-						<a class="nav-link" href="taikhoan.php">Tài khoản</a>
-					</li>
+						<?php
+						if(isset($_SESSION['email'])){
+							echo"<a class='nav-link' href='taikhoan.php'>Tài khoản</a>";
+						}
+						?>
+					</li>	
 					<li class="nav-item ">
 						<?php
 						if(isset($_SESSION['email'])){
@@ -51,113 +55,127 @@ session_start();
 	<br>
 	<br>
 	<br>
-	<div id="quanlytaikhoan"> <!-- taikhoan  -->
+	<?php 
+		$user_session = $_SESSION['email'];
+
+		$get_customer_pic = "SELECT * FROM users where email = '$user_session'";
+		$run_customer = mysqli_query($con,$get_customer_pic);
+
+		$row_customer = mysqli_fetch_array($run_customer);
+
+		$customer_pic = $row_customer['image'];
+		$customer_email = $row_customer['email'];
+		$customer_name = $row_customer['name'];
+
+		echo "<div id='quanlytaikhoan'> <!-- taikhoan  -->
+		<div class='container'>
+		<div class='row'>
+		<h4 style='color:#f47724;' id= '_info'>Thông tin khách hàng</h4>
+		</div> 
+		<div class='row'>
+		<div class='col-sm-4 push-sm-4' style=' text-align: center; '>
+		<img src='product_images/$customer_pic' alt='' style='width: 150px;'>
+		</div>
+		</div>
+		<br>
+		<hr>
+
+		<div class='row' style='text-align: center;'>
+		<div class='col-sm-5'>
+		<p style='background-color: #0c6aaa; color:white; display: inline-block; width:100%;text-align: center; font-size: 20px;' >THÔNG TIN CÁ NHÂN</p>
+
+		<div class='row'>
+		<div class='col-sm-3 _ten'>
+		<p style='color:black; font-size: 16px;' class=''>Tên</p>
+		</div>
+		<div class='col-sm-3  _ten'>
+		<p style='color:black; font-size: 16px;' class='_ten1'>$customer_name</p>
+		</div>
+
+		</div>
+		<div class='row'>
+		<div class='col-sm-3 _email'>
+		<p style='color:black; font-size: 16px;'>Email</p>
+		</div>
+		<div class='col-sm-3 _email2'>
+		<p style='color:black; font-size: 16px;'>$customer_email</p>
+		</div>
+		</div>";
+	?>
+	<div class="row">
+
+	</div>
+</div>
+<div class="col-sm-2"> </div>
+<div class="col-sm-5">
+	<div class="dichvu">
 		<div class="container">
-			<div class="row">
-				<h4 style="color:#f47724;" id= "_info">Thông tin khách hàng</h4>
-			</div> 
-			<div class="row">
-				<div class="col-sm-4 push-sm-4" style=" text-align: center; ">
-					<img src="img/huan.jpg" alt="" style="width: 150px;">
-				</div>
-			</div>
-			<br>
-			<hr>
-
-			<div class="row" style="text-align: center;">
-				<div class="col-sm-5">
-					<p style="background-color: #0c6aaa; color:white; display: inline-block; width:100%;text-align: center; font-size: 20px;" >THÔNG TIN CÁ NHÂN</p>
-
-					<div class="row">
-						<div class="col-sm-3 _ten">
-							<p style="color:black; font-size: 16px;" class="">Tên</p>
-						</div>
-						<div class="col-sm-3  _ten">
-							<p style="color:black; font-size: 16px;" class="_ten1">Huấn Hoan Hồng</p>
-						</div>
-
-					</div>
-					<div class="row">
-						<div class="col-sm-3 _email">
-							<p style="color:black; font-size: 16px;">Email</p>
-						</div>
-						<div class="col-sm-3 _email2">
-							<p style="color:black; font-size: 16px;">CoLamMoiCoan@hcmut.edu.vn</p>
-						</div>
-					</div>
-					<div class="row">
-
-					</div>
-				</div>
-				<div class="col-sm-2"> </div>
-				<div class="col-sm-5">
-					<div class="dichvu">
-						<div class="container">
-							<h4 class="cc" style="color:red;">CÁC CHỨC NĂNG CỦA TÀI KHOẢN</h4>
-							<li class="<?php if(isset($_GET['dat_hang'])){echo "active";} ?> cc">
-								<a href="taikhoan.php?dat_hang">
-									<i class="fa fa-list"></i> Đơn hàng của tôi
-								</a>
-							</li>
-							<li class="<?php if(isset($_GET['tra_off'])){echo "active";} ?> cc ">
-								<a href="taikhoan.php?tra_off">
-									<i class="fa fa-bolt"></i> Thanh toán offline
-								</a>
-							</li>
-							<li class="<?php if(isset($_GET['sua_tai_khoan'])){echo "active";} ?> cc">
-								<a href="taikhoan.php?sua_tai_khoan">
-									<i class="fa fa-pencil"></i> Cài đặt tài khoản
-								</a>
-							</li>
-							<li class="<?php if(isset($_GET['thay_pass'])){echo "active";} ?>  cc">
-								<a href="taikhoan.php?thay_pass">
-									<i class="fa fa-user"></i> Thay mật khẩu
-								</a>
-							</li>
-							<li class="<?php if(isset($_GET['xoa_tai_khoan'])){echo "active";} ?>  cc">
-								<a href="taikhoan.php?xoa_tai_khoan">
-									<i class="fa fa-trash-o"></i> Xóa tài khoản
-								</a>
-							</li>
-							<li class="cc">
-								<a href="dangxuat.php"  >
-									<i class="fa fa-sign-out"></i> Đăng xuất
-								</a>
-							</li>
-						</div>
-					</div>
-				</div> <!-- hết row của thông tin cá nhân -->
-			</div> <!-- het container -->
-		</div> <!-- het taikhoan --> 
-	</div> <!-- het quan ly tai khoan -->
-	<br>
-	<hr>
-	<br>
-	<div class="box">
-		<div class="container">
-			<?php 
-			if(isset($_GET['dat_hang'])) {
-				include("dat_hang.php");
-			}
-			?>
+			<h4 class="cc" style="color:red;">CÁC CHỨC NĂNG CỦA TÀI KHOẢN</h4>
+			<li class="<?php if(isset($_GET['dat_hang'])){echo "active";} ?> cc">
+				<a href="taikhoan.php?dat_hang">
+					<i class="fa fa-list"></i> Đơn hàng của tôi
+				</a>
+			</li>
+			<li class="<?php if(isset($_GET['tra_off'])){echo "active";} ?> cc ">
+				<a href="taikhoan.php?tra_off">
+					<i class="fa fa-bolt"></i> Thanh toán offline
+				</a>
+			</li>
+			<li class="<?php if(isset($_GET['sua_tai_khoan'])){echo "active";} ?> cc">
+				<a href="taikhoan.php?sua_tai_khoan">
+					<i class="fa fa-pencil"></i> Cài đặt tài khoản
+				</a>
+			</li>
+			<li class="<?php if(isset($_GET['thay_pass'])){echo "active";} ?>  cc">
+				<a href="taikhoan.php?thay_pass">
+					<i class="fa fa-user"></i> Thay mật khẩu
+				</a>
+			</li>
+			<li class="<?php if(isset($_GET['xoa_tai_khoan'])){echo "active";} ?>  cc">
+				<a href="taikhoan.php?xoa_tai_khoan">
+					<i class="fa fa-trash-o"></i> Xóa tài khoản
+				</a>
+			</li>
+			<li class="cc">
+				<a href="dangxuat.php"  >
+					<i class="fa fa-sign-out"></i> Đăng xuất
+				</a>
+			</li>
 		</div>
 	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<?php 
-	include("footer.php");
-	?>
+</div> <!-- hết row của thông tin cá nhân -->
+</div> <!-- het container -->
+</div> <!-- het taikhoan --> 
+
+</div> <!-- het quan ly tai khoan -->
+<br>
+<hr>
+<br>
+<div class="box">
+	<div class="container">
+		<?php 
+		if(isset($_GET['dat_hang'])) {
+			include("dat_hang.php");
+		}
+		?>
+	</div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<?php 
+include("footer.php");
+?>
 </body>
 </html>

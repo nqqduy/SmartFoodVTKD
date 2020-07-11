@@ -34,8 +34,12 @@ session_start();
 					<!-- <li class="nav-item">
 						<a class="nav-link" href="quanly.php">Quản lý</a>
 					</li> -->
-					<li class="nav-item">
-						<a class="nav-link" href="taikhoan.php">Tài khoản</a>
+						<li class="nav-item ">
+						<?php
+						if(isset($_SESSION['email'])){
+							echo"<a class='nav-link' href='taikhoan.php'>Tài khoản</a>";
+						}
+						?>
 					</li>					
 					<li class="nav-item ">
 						<?php
@@ -63,7 +67,7 @@ session_start();
 									echo"<a href='dangnhap.php?action=login' title=''><button type='button' class='btn btn-default btn-lg' id='myBtn1'>Đăng nhập</button></a>";								
 								}
 								else {
-									echo"<p style='color:white; font-size:20px;'>Xin chào: ".$_SESSION['email']."</p";
+									echo"<p style='color:white; font-size:20px;'><i class='fa fa-user 'aria-hidden='true'></i> Xin chào: ".$_SESSION['email']."</p";
 								}
 								?>
 							</div>
