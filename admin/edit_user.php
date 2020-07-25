@@ -3,7 +3,7 @@
 include("../db.php");
 $user_id=$_REQUEST['user_id'];
 
-$result=mysqli_query($con,"select user_id, email, password from user_info where user_id='$user_id'")or die ("query 1 incorrect.......");
+$result=mysqli_query($con,"select id, email, password from users where id='$user_id'")or die ("query 1 incorrect.......");
 
 list($user_id,$user_name,$user_password)=mysqli_fetch_array($result);
 
@@ -11,8 +11,9 @@ if(isset($_POST['btn_save']))
 {
 $user_name=$_POST['email'];
 $user_password=$_POST['password'];
+$hash_password=md5($user_password);
 
-mysqli_query($con,"update user_info set email='$user_name', password='$user_password' where user_id='$user_id'")or die("Query 2 is inncorrect..........");
+mysqli_query($con,"update users set email='$user_name', password='$hash_password' where id='$user_id'")or die("Query 2 is inncorrect..........");
 
 header("location: manage_users.php");
 mysqli_close($con);
@@ -48,7 +49,7 @@ mysqli_close($con);
 
 <div class="col-sm-7 ">
 <label style="font-size:18px;">Password</label><br>
-<input class="input-lg" style="font-size:18px; width:200px" name="password" type="text"  id="password" value="<?php echo $user_password; ?>">
+<input class="input-lg" style="font-size:18px; width:200px" name="password" type="text"  id="password" value="">
     <br><br></div>
     <div class="col-sm-7">
         <button type="submit" class="btn btn-success " name="btn_save" id="btn_save" style="font-size:18px">Submit</button></div>

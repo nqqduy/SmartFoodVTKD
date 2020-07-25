@@ -6,7 +6,7 @@ if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
 $user_id=$_GET['user_id'];
 
 /*this is delet quer*/
-mysqli_query($con,"delete from user_info where user_id='$user_id'")or die("query is incorrect...");
+mysqli_query($con,"delete from users where id='$user_id'")or die("query is incorrect...");
 }
 ?>
 <!DOCTYPE html>
@@ -36,9 +36,9 @@ mysqli_query($con,"delete from user_info where user_id='$user_id'")or die("query
                 <th>User Password</th>
 	<th><a href="add_user.php">Add New</a></th></tr>	
 <?php 
-$result=mysqli_query($con,"select user_id, email, password from user_info")or die ("query 2 incorrect.......");
+$result=mysqli_query($con,"select id, name, email, password from users")or die ("query 2 incorrect.......");
 
-while(list($user_id,$user_name,$user_password)=
+while(list($user_id,$user_name,$user_email,$user_password)=
 mysqli_fetch_array($result))
 {
 echo "<tr><td>$user_name</td><td>$user_password</td>";
