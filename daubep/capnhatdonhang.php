@@ -1,3 +1,42 @@
+<?php 
+include("connection.php");
+session_start();
+if(isset($_SESSION['processing']))
+{
+    $_SESSION['processing'] = 1;
+}
+else
+{
+    $_SESSION['processing'] = 0;
+}  
+
+if(isset($_SESSION['have_order'])) 
+{ 
+    if($_SESSION['have_order'] == 0)
+    $_SESSION['processing'] = 0;
+}
+else 
+{
+    $_SESSION["have_order"] = 0;
+}
+if(isset($_SESSION['id_bf']) == FALSE) $_SESSION['id_bf'] = 'bk';
+if(isset($_GET['id']) && ($_SESSION['id_bf'] != $_GET['id']))
+{
+    
+    $_SESSION['processing'] = 0;
+    echo "vaoaoa";
+    $sql_dlt = "DELETE FROM don_hang WHERE Stt=".$_SESSION["row"]["Stt"];
+    $sql_drop = "DROP TABLE ".$_SESSION["row"]["ID"];
+    
+    //$bkfood_db->query($sql_dlt);
+    //$listorder_db->query($sql_drop);
+    unset($_SESSION['result']);
+    $_SESSION['id_bf'] = $_GET['id'];
+} 
+echo $_SESSION["have_order"];
+echo "eee";
+echo $_SESSION['processing'];
+?>
 
 <!doctype html>
 <html lang="en">
@@ -6,7 +45,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>DauBep</title>
     <!-- Bootstrap core CSS -->
-    <link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
     <meta name="theme-color" content="#563d7c">
 
 
@@ -69,7 +112,9 @@
             margin: 0 5px;
             cursor: pointer;
         }
-       
+        table.table th:first-child {
+            width: 100px;
+        }
         table.table td a {
             cursor: pointer;
             display: inline-block;
@@ -111,6 +156,15 @@
     
   </head>
   <body class="bg-light">
+        
+   
+
+
+
+
+
+
+
     <header>
         <div class="navbar navbar-dark bg-dark shadow-sm">
                 <div class="container d-flex justify-content-between">
@@ -123,60 +177,195 @@
                 </div>
          </div>
     </header>
-
+    
     <main role="main" class="container">
     <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-0">Thông tin đơn hàng</h6>
         <div class="container-lg">
         <div class="table-responsive">
             <div class="table-wrapper">
+                <?php
+                    
+                    $sql = "SELECT * FROM don_hang WHERE Status='pending'";
+                    
+                    if(($_SESSION['processing'] == 0) || ($_SESSION['have_order'] == 0))
+                    {
+
+                            $_SESSION["result"] = $bkfood_db->query($sql);
+                            if($_SESSION["result"]->num_rows > 0)
+                            {    
+                                
+                                $_SESSION["row"] =  $_SESSION["result"]->fetch_assoc();
+                                $_SESSION["have_order"] = 1;
+                                $stt = $_SESSION["row"]["Stt"];
+                                $sql1 = "UPDATE don_hang SET Status='processing' WHERE Stt='$stt'";
+                                $bkfood_db->query($sql1);
+                                
+                               
+                                
+                            }
+                            else
+                            {
+                                $_SESSION['have_order'] = 0;
+                                
+                               
+                            }
+                            
+                            
+                            
+                    
+                    
+                    }
+                    
+                        
+                    
+                        
+                    
+                    
+                    
+                ?>
                 <div class="table-title">
+        
                     <div class="row">
-                        <div class="col-sm-8"><h2>ID: 123</h2></div>
+                        <div class="col-sm-8"><h2>
+                        <?php
+                        if ($_SESSION['have_order'] == 1)
+                        { 
+                            echo "ID: ".$_SESSION["row"]["ID"];
+                            
+                        }
+                        else echo "Hiện tại không có đơn hàng."
+                        ?>
+                        </h2></div>
                     </div>
                 </div>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
+                            <th>STT</th>
                             <th>Tên</th>
                             <th>Số lượng</th>
-                            <th>Ghi chú</th>
 
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Phở Lý Quốc Sư</td>
-                            <td>2</td>
-                            <td>không bỏ hành</td>
+                        <?php  
+                        if($_SESSION["have_order"] == 1)
+                        {
                             
-                        </tr>
-                        <tr>
-                            <td>Bánh Mì Thịt</td>
-                            <td>3</td>
-                            <td></td>
                             
-                        </tr>
-                        <tr>
-                            <td>Pepsi</td>
-                            <td>3</td>
-                            <td></td>
-                            
-                        </tr>      
+                            //
+                            // if($bkfood_db->query($sql1) == TRUE)
+                            // {
+                            // }           
+                            // else{
+                            //     echo "Error updating record";
+
+                            // }
+                            $sql2 = "SELECT * FROM ".$_SESSION["row"]["ID"];
+                            $result2 = $listorder_db->query($sql2);
+                            if($result2->num_rows > 0)
+                            {
+                                while($row2 = $result2->fetch_assoc())
+                                {
+                                echo "<tr>
+                                    <td>".$row2["stt"]."</td>
+                                    <td>".$row2["Product_title"]."</td>
+                                    <td>".$row2["Quantity"]."</td>                                    
+                                    </tr>";
+                                }
+                            }
+                        }
+                        
+                        ?>
+                        
                     </tbody>
                 </table>
             </div>
         </div>
-
+        
         <small class="d-block text-right mt-3">
-            <a href="#" class="btn btn-success my-2">Hoàn thành</a>
-            <a href="#" class="btn btn-danger my-2">Hủy bỏ</a>
+            <!-- <a href="#" class="btn btn-success my-2">Hoàn thành</a>
+            <a href="#" class="btn btn-danger my-2">Hủy bỏ</a> -->
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalReady">
+                        Hoàn thành
+            </button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalCancel">
+                        Hủy bỏ
+            </button>
+            
         </small>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalReady" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Xác nhận</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Bạn chắc chắn đơn hàng đã "sẵn sàng"?
+        </div>
+        <div class="modal-footer">
+            
+            <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modalContinue">Chắc chắn</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay lại</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="modal fade" id="modalCancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Xác nhận</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Bạn chắc chắn muốn "Hủy" đơn hàng?
+        </div>
+        <div class="modal-footer">
+            
+            <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modalContinue">Chắc chắn</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay lại</button>
+        </div>
+        </div>
+    </div>
+    </div>                    
+    
+    <div class="modal fade" id="modalContinue" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Xác nhận</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Bạn có muốn thực hiện đơn hàng khác?
+        </div>
+        <div class="modal-footer">
+            
+            <a href="capnhatdonhang.php?processing=0&id=<?php echo $_SESSION["row"]["ID"]?>" class="btn btn-primary">Có</a>
+            <a href="index.php" class="btn btn-secondary">Không</a>
+        </div>
+        </div>
+    </div>
+    </div>
+
 
     </main>
     <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">© BK SmartFood</p> 
     </footer>
+    
 </body>
+
 </html>
