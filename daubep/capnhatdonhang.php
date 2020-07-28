@@ -24,18 +24,14 @@ if(isset($_GET['id']) && ($_SESSION['id_bf'] != $_GET['id']))
 {
     
     $_SESSION['processing'] = 0;
-    echo "vaoaoa";
     $sql_dlt = "DELETE FROM don_hang WHERE Stt=".$_SESSION["row"]["Stt"];
     $sql_drop = "DROP TABLE ".$_SESSION["row"]["ID"];
     
-    //$bkfood_db->query($sql_dlt);
-    //$listorder_db->query($sql_drop);
+    $bkfood_db->query($sql_dlt);
+    $listorder_db->query($sql_drop);
     unset($_SESSION['result']);
     $_SESSION['id_bf'] = $_GET['id'];
 } 
-echo $_SESSION["have_order"];
-echo "eee";
-echo $_SESSION['processing'];
 ?>
 
 <!doctype html>
