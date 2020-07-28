@@ -64,7 +64,9 @@ session_start();
 								if(!isset($_SESSION['email']))
 								{
 									echo"<a href='dangky.php' title=''><button type='button' class='btn btn-danger btn-lg' id='myBtn1'>Đăng Ký</button></a>";
-									echo"<a href='dangnhap.php?action=login' title=''><button type='button' class='btn btn-default btn-lg' id='myBtn1'>Đăng nhập</button></a>";								
+									echo"<a href='dangnhap.php?action=login' title=''><button type='button' class='btn btn-default btn-lg' id='myBtn1'>Đăng nhập</button></a>";	
+									echo"<br>"; echo"<br>";
+									echo"<p style='color:white; font-size:20px;'><i class='fa fa-user 'aria-hidden='true'></i> Xin chào: khách hàng </p";						
 								}
 								else {
 									echo"<p style='color:white; font-size:20px;'><i class='fa fa-user 'aria-hidden='true'></i> Xin chào: ".$_SESSION['email']."</p";

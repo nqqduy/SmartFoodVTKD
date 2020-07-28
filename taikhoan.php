@@ -152,6 +152,11 @@ session_start();
 <hr>
 <br>
 <div class="box">
+	
+	<?php  
+	get_mac_dinh();
+	?>
+
 	<div class="container">
 		<?php 
 		if(isset($_GET['dat_hang'])) {

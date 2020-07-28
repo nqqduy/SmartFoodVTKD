@@ -38,11 +38,10 @@ include("function.php");
 			$run_customer = mysqli_query($con,$get_customer);
 			$customer = mysqli_fetch_array($run_customer);
 			$customer_id = $customer['id'];
-
 		?>
 		<div class="row">
 			<div class="col-sm-4">
-				<a href="order.php?c_id= <?php echo $customer_id ?>" title=""><p style="text-decoration: none;font-size: 20px; color:green;">Thanh toán trong tài khoản</p></a>
+				<a href="order.php?c_id= <?php echo $customer_id; ?>" title=""><p style="text-decoration: none;font-size: 20px; color:green;">Thanh toán trong tài khoản</p></a>
 			</div>
 		</div>
 	</div>

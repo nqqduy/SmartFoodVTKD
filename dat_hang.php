@@ -1,11 +1,18 @@
+
 <center>
 	<h3 style="color:green;">ĐƠN HÀNG</h3>
 
 	<p class="lead">Đây là đơn hàng của bạn</p>
 
 </center>
+<?php  
+	
+?>
+</div> <!-- kết thúc table-responsive -->
 
-<div class="table-responsive">
+
+
+<!-- <div class="table-responsive">
 	
 	<table class="table table-bordered table-hover">
 		
@@ -44,6 +51,4 @@
 			
 		</body>
 
-	</table>  <!-- end table table-bordered table-hover -->
-
-</div> <!-- kết thúc table-responsive -->
+	</table>  <!-- end table table-bordered table-hover --> -->
