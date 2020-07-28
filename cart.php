@@ -60,12 +60,15 @@ include("db.php");
 
 							$run_cart = mysqli_query($con, "select * from cart where ip_address='$ip' ");
 
+							$cart_ids = array();
 
 							while($fetch_cart = mysqli_fetch_array($run_cart)){
 
 								$product_id = $fetch_cart['product_id'];
 
 								$cart_id = $fetch_cart['cat_id'];
+
+								array_push($cart_ids, $cart_id);
 
 								$result_product = mysqli_query($con, "select * from product where product_id = '$product_id'");
 
@@ -149,10 +152,11 @@ include("db.php");
 			}
 			if(isset($_POST['update_cart']))
 			{
-				foreach($_POST['qty'] as $qty_add)
-				$insert_qty = "UPDATE cart set quality ='$qty_add' where cat_id = '$cart_id' ";
-				$run_qty = mysqli_query($con, $insert_qty);
-				$values_qty = $values * $qty;
+				foreach(array_map(null, $_POST['qty'], $cart_ids) as $it) {
+					$insert_qty = "UPDATE cart set quality ='$it[0]' where cat_id = '$it[1]' ";
+					$run_qty = mysqli_query($con, $insert_qty);
+					$values_qty = $values * $qty;
+				}
 
 				echo "<script>window.open('cart.php','_self')</script>";
 			}
