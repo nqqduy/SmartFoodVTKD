@@ -96,30 +96,13 @@ session_start();
 		<a href="cart.php"><button type="button" class="btn btn-link"> <i class="fa fa-shopping-cart" style="font-size:20px;">Quản lý giỏ hàng</i></button></a>
 	</div>
 </div>
-<div class="content_wrapper">
-	<div id="sidebar" >
-		<div id="sidebar_title">Menu</div>
-		<ul id="cats">
-			<?php 
-			getCats();
-			?>
-		</ul>
-		<div id="sidebar_title">THỰC ĐƠN HÔM NAY</div>
-		<ul id="cats">
-			<?php 
-			getThucPham();
-			?>
-			
-		</ul>
-	</div>
-</div>
 <div class="menu">
 	<h1 style="text-align: center;"> THỰC PHẨM VÀ ĐỒ UỐNG</h1>
 </div>
 <br>
 <br>
 <hr>
-<div class="container-fluid ">
+<div class="container ">
 	<div class="row">
 		<?php 
 		$get_proc = "SELECT * FROM  product order by RAND() limit 0,20";
@@ -134,9 +117,9 @@ session_start();
 			$pro_img = $row_pro['product_image'];
 			$pro_mota = $row_pro['product_mota'];
 			echo " 
-			<div class='col-sm-3 duy1'>
+			<div class='col-sm-4'>
 			<div class='card' style='width: 18rem; height:400px'>
-			<img class='card-img-top img-fluid' src='product_images/$pro_img' alt='Card image cap'style='width:100%; height:179px'>
+			<img class='card-img-top img-fluid' src='img/$pro_img' alt='Card image cap'style='width:100%; height:179px'>
 			<div class='card-body'>
 			<h5 class='card-title tieude' style='
 			text-align: center;

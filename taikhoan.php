@@ -116,13 +116,8 @@ session_start();
 					<i class="fa fa-list"></i> Đơn hàng của tôi
 				</a>
 			</li>
-			<li class="<?php if(isset($_GET['tra_off'])){echo "active";} ?> cc ">
-				<a href="taikhoan.php?tra_off">
-					<i class="fa fa-bolt"></i> Thanh toán offline
-				</a>
-			</li>
-			<li class="<?php if(isset($_GET['sua_tai_khoan'])){echo "active";} ?> cc">
-				<a href="taikhoan.php?sua_tai_khoan">
+			<li class="<?php if(isset($_GET['edit_taikhoan'])){echo "active";} ?> cc">
+				<a href="taikhoan.php?edit_taikhoan">
 					<i class="fa fa-pencil"></i> Cài đặt tài khoản
 				</a>
 			</li>
@@ -156,14 +151,18 @@ session_start();
 	<?php  
 	get_mac_dinh();
 	?>
-
-	<div class="container">
-		<?php 
-		if(isset($_GET['dat_hang'])) {
-			include("dat_hang.php");
+	<?php 
+		if(isset($_GET['dat_hang']))
+		{
+			include("my_order.php");
 		}
-		?>
-	</div>
+		if(isset($_GET['edit_taikhoan']))
+		{
+			include("edit_taikhoan.php");
+		}
+
+
+	 ?>
 </div>
 <br>
 <br>

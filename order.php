@@ -70,7 +70,7 @@ else {
 	$sub_total = $total*$qty;
 }
 
-$insert_order = "INSERT into customer_order (order_id, customer_id, due_amount, invoice_no, total_products, order_date, order_status) values ('','$customer_id','$sub_total','$invoice_no','$count_pro','NOW()','$status')";
+$insert_order = "INSERT into customer_order (order_id, customer_id, due_amount, invoice_no, total_products, order_date, order_status) values ('','$customer_id','$sub_total','$invoice_no','$count_pro',NOW(),'$status')";
 
 $run_order = mysqli_query($con, $insert_order);
 $empty_cart = "DELETE from cart where ip_address='$ip'";

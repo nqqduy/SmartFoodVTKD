@@ -1,7 +1,5 @@
 <?php 
 include("db.php");
-include("function.php");
-
 $c = $_SESSION['email'];
 
 $get_c = "SELECT * from users where email = '$c'";
@@ -13,17 +11,52 @@ $row_c = mysqli_fetch_array($run_c);
 $customer_id = $row_c['id'];
 
 ?>
-<table width="700" align="center">
-	<tr>
-		<th></th>
-		<th></th>
-		<th></th>
-		<th></th>
-		<th></th>
-		<th></th>
-		<th></th>
-		<th></th>
-		<th></th>
-	</tr>	
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12 push-sm-1">
+			<table width="1024" align="center" bgcolor="#1488db" class="table-bordered">
+				<tr>
+					<th class="duyy1" style="text-align: center;">Order no</th>
+					<th class="duyy1" style="text-align: center;">Due Amount</th>
+					<th class="duyy1" style="text-align: center;">Invoice No</th>
+					<th class="duyy1" style="text-align: center;">Total Procducts</th>
+					<th style="text-align: center;">Oder Date</th>
+					<th class="duyy1" style="text-align: center;">Paid/Unpaid</th>
+					<th class="duyy1" style="text-align: center;">Status</th>
+				</tr>	
+				<?php 
+				$get_orders ="select * from customer_order where customer_id='$customer_id'";
+				$run_orders = mysqli_query($con, $get_orders);
+				$i = 0;
+				while($row_orders = mysqli_fetch_array($run_orders))
+				{
+					$order_id = $row_orders['order_id'];
+					$due_amount = $row_orders['due_amount'];
+					$inovice_no = $row_orders['invoice_no'];
+					$products = $row_orders['total_products'];
+					$date = $row_orders['order_date'];
+					$status = $row_orders['order_status'];
+					$i++;
+					if($status == 'Pending') {
+						$status = 'Chưa thanh toán';
 
-</table>
+					}
+					else {
+						$status = 'Đã thanh toán';
+					}
+					echo"
+					<tr align='center'>			
+					<td> $i</td>
+					<td>$due_amount</td>
+					<td>$inovice_no</td>
+					<td>$products</td>
+					<td>$date</td>
+					<td>$status</td>
+					<td><a href='confirm.php?order_id=$order_id'> Xác nhận thanh toán </td>
+					</tr>";	
+				}
+				?>
+			</table>
+		</div>
+	</div>
+</div>
