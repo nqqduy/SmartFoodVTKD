@@ -33,11 +33,11 @@ if(isset($_GET['order_id'])) {
 
 					</tr>	
 					<tr >
-						<td>Inovice No:</td>
+						<td>Invoice No:</td>
 						<td><input type="text" name ="inovice_no"> </td>
 					</tr>
 					<tr >
-						<td>Amuont sent:</td>
+						<td>Amount sent:</td>
 						<td><input type="text" name ="amount"> </td>
 					</tr>
 					<tr >
@@ -45,7 +45,7 @@ if(isset($_GET['order_id'])) {
 						<td> <select name="payment_method"> 
 							<option> Select payment </option>
 							<option> Dong A bank </option>
-							<option> OCB bacnk </option>
+							<option> OCB bank </option>
 							<option> Paypal </option>
 						</td>
 					</tr>
