@@ -28,7 +28,7 @@ if(isset($_GET['edit_taikhoan']))
 
 			<table align="center" width="800">
 				<tr>
-					<td colspan="4" align="center"><h2>CHỈNH SỬA TÀI KHOẢN</h2></td>
+					<td colspan="3" align="center"><h2>CHỈNH SỬA TÀI KHOẢN</h2></td>
 				</tr>
 				<tr >
 					<td align="center">Tên: </td>
@@ -39,16 +39,11 @@ if(isset($_GET['edit_taikhoan']))
 					<td> <input type="text" name="c_email"value ="<?php echo $customer_email; ?>"> </td>
 				</tr>
 				<tr>
-					<td align="center">Mật khẩu (mã hóa):  </td>
-					<td> <input type="password" name="c_pass"value ="<?php echo $password; ?>"> </td>
-				</tr>
-
-				<tr>
 					<td align="center">Ảnh đại diện:  </td>
 					<td> <input type="file" name="image" size="60"> <img src="product_images/<?php echo $image; ?>" alt=""style="width: 60px; height: 60px";> </td>
 				</tr>
 				<tr> 
-					<td align="center" colspan="4"> <input type="submit" name="update_c" value ="Cập nhật"></td>
+					<td align="center" colspan="3"> <input type="submit" name="update_c" value ="Cập nhật"></td>
 				</tr>
 			</table>
 		</form>
@@ -59,12 +54,11 @@ if(isset($_GET['edit_taikhoan']))
 			$update_id = $id;
 			$c_name = $_POST['c_name'];
 			$c_email = $_POST['c_email'];
-			$c_pass = md5($_POST['c_pass']);
 			$u_image = $_FILES['image']['name'];
 			$image_tmp = $_FILES['image']['tmp_name']; 
 			
 
-			$update = "UPDATE users SET name = '$c_name', email = '$c_email', password='$c_pass', image ='$u_image' where id = '$update_id'";
+			$update = "UPDATE users SET name = '$c_name', email = '$c_email', image ='$u_image' where id = '$update_id'";
 
 			move_uploaded_file($image_tmp,"product_images/$u_image");
 

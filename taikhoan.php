@@ -160,6 +160,11 @@ session_start();
 		{
 			include("edit_taikhoan.php");
 		}
+		if(isset($_GET['thay_pass']))
+		{
+			include("change_pass.php");
+		}
+
 
 
 	 ?>
