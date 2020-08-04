@@ -7,7 +7,7 @@ if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
 $order_id=$_GET['order_id'];
 
 /*this is delet query*/
-mysqli_query($con,"delete from orders where order_id='$order_id'")or die("delete query is incorrect...");
+mysqli_query($con,"delete from customer_order where order_id='$order_id'")or die("delete query is incorrect...");
 } 
 
 ///pagination
@@ -42,13 +42,13 @@ $page1=($page*10)-10;
 <div class='table-responsive'>  
 <div style="overflow-x:scroll;">
 <table class="table  table-hover table-striped" style="font-size:18px">
-<tr><th>Customer Name</th><th>Products</th><th>Contact | Email</th><th>Address</th><th>Details</th><th>Shipping</th><th>Time</th></tr>
+<tr><th>Order ID</th><th>Invoice No.</th><th>Due Amount</th><th>Total Products</th><th>Order Date</th><th>Status</th><th>Name</th><th>Email</th><th>Action</th></tr>
 <?php 
-$result=mysqli_query($con,"select order_id, product_title, first_name, mobile, email, address1, address2, product_price,address2, qty from orders,products,user_info where orders.product_id=products.product_id and user_info.user_id=orders.user_id Limit $page1,10")or die ("query 1 incorrect.....");
+$result=mysqli_query($con,"select order_id, due_amount, invoice_no, total_products, order_date, order_status, name, email from customer_order, users where customer_order.customer_id=users.id Limit $page1,10")or die ("query 1 incorrect.....");
 
-while(list($order_id,$p_names,$cus_name,$contact_no,$email,$address,$country,$details,$zip_code,$time,$quantity)=mysqli_fetch_array($result))
+while(list($order_id, $due_amount, $invoice_no, $total_products, $order_date, $order_status, $name, $email)=mysqli_fetch_array($result))
 {	
-echo "<tr><td>$cus_name</td><td>$p_names</td><td>$email<br>$contact_no</td><td>$address<br>ZIP: $zip_code<br>$country</td><td>$details</td><td>$quantity</td><td>$time</td>
+echo "<tr><td>$order_id</td><td>$invoice_no</td><td>$due_amount</td><td>$total_products</td><td>$order_date</td><td>$order_status</td><td>$name</td><td>$email</td>
 
 <td>
 <a class=' btn btn-success' href='orders.php?order_id=$order_id&action=delete'>Delete</a>
