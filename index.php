@@ -5,7 +5,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en"><head>
-	<title> Example </title>
+	<title>Smart Food Court System  </title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">  
 	<script type="text/javascript" src="vendor/bootstrap.js"></script>
@@ -23,7 +23,7 @@ session_start();
 				&#9776;
 			</button>
 			<div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-				<a class="navbar-brand logo" href="index.php">SMART FOOD COURT SYSTEM</a>
+				<a class="navbar-brand logo" href="index.php"> <img src="img/logo.png" alt="" style="width: 40px;"> SMART FOOD COURT SYSTEM</a>
 				<ul class="nav navbar-nav float-sm-right trenphai">
 					<li class="nav-item active">
 						<a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a>

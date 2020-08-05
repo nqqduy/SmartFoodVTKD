@@ -16,13 +16,14 @@ $customer_id = $row_c['id'];
 		<div class="col-sm-12 push-sm-1">
 			<table width="1024" align="center" bgcolor="#1488db" class="table-bordered">
 				<tr>
-					<th class="duyy1" style="text-align: center;">Order no</th>
-					<th class="duyy1" style="text-align: center;">Due Amount</th>
-					<th class="duyy1" style="text-align: center;">Invoice No</th>
-					<th class="duyy1" style="text-align: center;">Total Procducts</th>
-					<th style="text-align: center;">Oder Date</th>
-					<th class="duyy1" style="text-align: center;">Paid/Unpaid</th>
-					<th class="duyy1" style="text-align: center;">Status</th>
+					<th class="duyy1" style="text-align: center;">Thứ tự</th>
+					<th class="duyy1" style="text-align: center;">Tổng giá tiền</th>
+					<th class="duyy1" style="text-align: center;">Số hóa đơn</th>
+					<th class="duyy1" style="text-align: center;">Tổng sản phẩm</th>
+					<th style="text-align: center;">Ngày đặt</th>
+					<th class="duyy1" style="text-align: center;">Thanh toán / chưa thanh toán</th>
+					<th class="duyy1" style="text-align: center;">Trạng thái</th>
+					<th class="duyy1" style="text-align: center;">Chi tiết</th>
 				</tr>	
 				<?php 
 				$get_orders ="select * from customer_order where customer_id='$customer_id'";
@@ -53,6 +54,7 @@ $customer_id = $row_c['id'];
 					<td>$date</td>
 					<td>$status</td>
 					<td><a href='confirm.php?order_id=$order_id'> Xác nhận thanh toán </td>
+					<td><a href='chitiet.php?chitiet=$order_id'> xem chi tiết đơn hàng </td>
 					</tr>";	
 				}
 				?>

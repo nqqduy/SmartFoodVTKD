@@ -76,7 +76,7 @@ $run_order = mysqli_query($con, $insert_order);
 $empty_cart = "DELETE from cart where ip_address='$ip'";
 $run_empty = mysqli_query($con,$empty_cart);
 
-$insert_to_pending_orders = "INSERT into pending_orders (customer_id ,invoice_no, product_id , qty ,order_status) values ('$customer_id','$invoice_no','$product_id','$qty','$status')";
+// $insert_to_pending_orders = "INSERT into pending_order (customer_id ,invoice_no, product_id , qty ,order_status) values ('$customer_id','$invoice_no','$product_id','$qty','$status')";
 
 $run_pending_order = mysqli_query($con,$insert_to_pending_orders);
 

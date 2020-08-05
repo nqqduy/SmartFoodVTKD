@@ -21,7 +21,7 @@ include('function.php')
 				&#9776;
 			</button>
 			<div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-				<a class="navbar-brand logo" href="#">SMART FOOD COURT SYSTEM</a>
+				<a class="navbar-brand logo" href="index.php"> <img src="img/logo.png" alt="" style="width: 40px;"> SMART FOOD COURT SYSTEM</a>
 				<ul class="nav navbar-nav float-sm-right trenphai">
 					<li class="nav-item ">
 						<a class="nav-link" href="index.php">Trang chủ <span class="sr-only">(current)</span></a>
@@ -97,7 +97,7 @@ include('function.php')
 								echo " 
 								<div class='col-sm-3 duy1' style='margin-top:4%;'>
 								<div class='card' style='width: 18rem; height:400px'>
-								<img class='card-img-top img-fluid' src='product_images/$pro_img' alt='Card image cap'style='width:100%; height:179px'>
+								<img class='card-img-top img-fluid' src='img/$pro_img' alt='Card image cap'style='width:100%; height:179px'>
 								<div class='card-body'>
 								<h5 class='card-title tieude' style='
 								text-align: center;

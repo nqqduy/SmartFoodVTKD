@@ -93,11 +93,11 @@ include('function.php');
 			$check_cart = mysqli_num_rows($run_cart);
 
 			if($check_login > 0 AND $check_cart == 0){
-				echo "<script>alert('You have logged in successfully !')</script>";
+				echo "<script>alert('Đăng nhập thành công !')</script>";
 				echo "<script>window.open('taikhoan.php','_self')</script>";
 
 			}else{
-				echo "<script>alert('You have logged in successfully !')</script>";
+				echo "<script>alert('Đăng nhập thành công !')</script>";
 				echo "<script>window.open('checkout.php','_self')</script>";
 			}
 		}

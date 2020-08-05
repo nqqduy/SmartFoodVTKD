@@ -27,12 +27,16 @@ include("db.php");
 	</div>
 	<div class="giohang">
 		<div class="container">
-			
-			<h3 id ="_quanly">QUẢN LÝ GIỎ HÀNG CỦA BẠN</h3>
-			<br>
-			<h6>Tổng cộng mặt hàng đã đặt: <?php total_items(); ?></h6>
-			<br>
-			<h6>Tổng cộng giá đã đặt: <?php total_price(); ?></h6>
+			<div class="row">
+				<div class="col-sm-12">
+					<h3 id ="_quanly" style="width: 100%;"><img src="img/logo.png" alt="" width="70px;">QUẢN LÝ GIỎ HÀNG CỦA BẠN</h3>
+					<br>
+					<h6>Tổng cộng mặt hàng đã đặt: <?php total_items(); ?>
+					<br>
+					<br>
+					<h6>Tổng cộng giá đã đặt: <?php total_price(); ?></h6>
+				</div>
+			</div>
 		</div>
 	</div>
 	<br>
@@ -42,7 +46,7 @@ include("db.php");
 			<div class="row">
 				<div class="col-sm-10 push-sm-1">
 					<form action="" method="post" enctype="multipart/form-data" class="bang1">
-						<table align="center" width="100%">
+						<table align="center" width="100%" class="table-active table-hover">
 
 							<tr align="center">
 								<th class="xoa" style="padding: 15px; text-align: center;"> 
@@ -105,15 +109,11 @@ include("db.php");
 											<h4><?php echo $product_title;?></h4>
 											<img style="
 											width: 205px;
-											height: 160px;  padding: 15px;
-											"src="product_images/<?php echo $product_image; ?> " />
+											height: 160px;  padding: 15px; border-radius: 40%;
+											"src="img/<?php echo $product_image; ?> " />
 										</td>
 										<td><input type="text1" size="10" name="qty[]" id ="<?php echo $cart_id ?>" value="<?php echo $qty; ?>" />
-
-
-										</td>
-										
-										
+										</td>	
 										<td id="_tien"><?php echo $sing_price;?> VNĐ</td>
 										<td id="_ten"><?php echo $values_qty;?> VNĐ</td>
 										
@@ -125,8 +125,12 @@ include("db.php");
 							<tr class="Cap_Nhap_Va_Thanh_Toan">
 								<td> Nếu có thay đổi</td>
 								<td> Vui lòng chọn: </td>
-								<td id="Cap_Nhap"><input type="submit" name="update_cart" value="Cập nhật giỏ hàng" style="color:blue;" /></td>
-								<td id = "Thanh_Toan"><button style="width: 100px;"><a href="checkout.php" style="text-decoration: none; color:red;">Thanh toán</a></td>
+								<?php  
+								if ($total != 0) {
+									echo "<td id='Cap_Nhap'><input type='submit' name='update_cart' value='Cập nhật giỏ hàng' style='color:blue;' /></td>";
+
+									echo "<td id = 'Thanh_Toan'><button style='width: 100px;'><a href='checkout.php' style='text-decoration: none; color:red;'>Thanh toán</a></td>"; } ?>
+
 								</tr>
 							</table>					
 						</form>

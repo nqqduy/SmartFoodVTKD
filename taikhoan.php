@@ -22,7 +22,7 @@ session_start();
 				&#9776;
 			</button>
 			<div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-				<a class="navbar-brand logo" href="index.php">SMART FOOD COURT SYSTEM</a>
+			<a class="navbar-brand logo" href="index.php"> <img src="img/logo.png" alt="" style="width: 40px;"> SMART FOOD COURT SYSTEM</a>
 				<ul class="nav navbar-nav float-sm-right trenphai">
 					<li class="nav-item ">
 						<a class="nav-link" href="index.php">Trang chủ <span class="sr-only">(current)</span></a>
@@ -163,6 +163,10 @@ session_start();
 		if(isset($_GET['thay_pass']))
 		{
 			include("change_pass.php");
+		}
+		if(isset($_GET['xoa_tai_khoan']))
+		{
+			include("delete_taikhoan.php");
 		}
 
 
