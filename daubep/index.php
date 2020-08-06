@@ -1,13 +1,13 @@
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>DauBep</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/album/">
-	<link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-	<meta name="msapplication-config" content="https://getbootstrap.com/docs/4.5/assets/img/favicons/browserconfig.xml">
-	<meta name="theme-color" content="#563d7c">
+  <link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <meta name="msapplication-config" content="https://getbootstrap.com/docs/4.5/assets/img/favicons/browserconfig.xml">
+  <meta name="theme-color" content="#563d7c">
 
 
     <style>
@@ -64,4 +64,99 @@
     
   </footer>
 
+</html>
+-->
+<?php
+session_start();
+include("../db.php");
+error_reporting(0);
+if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
+{
+  $order_id=$_GET['order_id'];
+
+  /*this is delet query*/
+  mysqli_query($con,"delete from customer_order where order_id='$order_id'")or die("delete query is incorrect...");
+} 
+
+///pagination
+$page=$_GET['page'];
+
+if($page=="" || $page=="1")
+{
+  $page1=0; 
+}
+else
+{
+  $page1=($page*10)-10; 
+}
+?>
+<!DOCTYPE html>
+<html lang="en"><head>
+  <title>Smart Food Court System  </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <script type="text/javascript" src="../vendor/bootstrap.js"></script>
+  <script type="text/javascript" src="1.js"></script>
+  <link rel="stylesheet" href="../vendor/bootstrap.css">
+  <link rel="stylesheet" href="../vendor/font-awesome.css">
+  <link rel="stylesheet" href="../1.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pridi:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://code.jquery.com/jquery-3.5.1.min.js">
+</head>
+<body >
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center" style=" text-align: center;">
+        <img src="../img/logo.png" alt="" style="width: 100px;">
+        <h1  style="color:red; text-align: center;">ĐẦU BẾP</h1>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 ">
+        <table width="" align="center" bgcolor="" class="table-bordered table-active table" >
+          <tr>
+            <th class="duyy1" style="text-align: center;">Thứ tự đơn hàng</th>  
+            <th class="duyy1" style="text-align: center;">Số hóa đơn</th>
+            <th style="text-align: center;">Trạng thái</th>
+            <th class="duyy1" style="text-align: center;">Tên khách hàng</th>
+            <th class="duyy1" style="text-align: center;">Email</th>
+            
+
+          </tr> 
+          <?php 
+          $a = 0;
+          $result=mysqli_query($con,"select order_id, due_amount, invoice_no, total_products, order_date, order_status, name, email from customer_order, users where customer_order.customer_id=users.id Limit $page1,10")or die ("query 1 incorrect.....");
+
+          while(list($order_id, $due_amount, $invoice_no, $total_products, $order_date, $order_status, $name, $email)=mysqli_fetch_array($result))
+          { 
+            $a = $a+1;
+            echo "<tr>
+                      <td style='text-align: center;'>$a</td>
+                      <td  style='text-align: center;'>$invoice_no</td>
+                      <td style='text-align: center;'>Đã Thanh toán</td>
+                      <td style='text-align: center;'>$name</td>
+                      <td style='text-align: center;'>$email</td>
+                      
+            <td> <a href='index.php?sansang=$invoice_no'> <button type='button' class='btn btn-success btn-sm'>Sẵn Sàng</button></a>
+            </td></tr>
+            <td> <a href='index.php?invoice_no=$invoice_no'> <button type='button' class='btn btn-success btn-sm'>Chi tiết</button></a>
+            </td></tr>";    
+          }
+          ?>
+        </table>
+
+        <?php 
+        if(isset($_GET['sansang'])) {
+            $_SESSION['invoice_no'] = $_GET['invoice_no'];
+          }
+
+
+
+         ?>
+      </div>
+    </div>
+  </div>
+</body>
 </html>

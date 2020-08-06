@@ -148,13 +148,15 @@ session_start();
 <br>
 <div class="box">
 	
-	<?php  
-	get_mac_dinh();
-	?>
+	
 	<?php 
+	
 		if(isset($_GET['dat_hang']))
 		{
 			include("my_order.php");
+
+				
+			
 		}
 		if(isset($_GET['edit_taikhoan']))
 		{

@@ -23,7 +23,7 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 	if($picture_size<=50000000)
 	
 		$pic_name=time()."_".$picture_name;
-		move_uploaded_file($picture_tmp_name,"../product_images/".$pic_name);
+		move_uploaded_file($picture_tmp_name,"../img/".$pic_name);
 		
 mysqli_query($con," insert into product (product_cat, product_loai, product_title, product_gia, product_mota, product_image) values ('$product_cat','$product_brand','$product_title','$product_price','$product_desc','$pic_name') ") or die ("query incorrect");
 

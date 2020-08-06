@@ -1,7 +1,7 @@
 <?php 
 include("db.php");
 $c = $_SESSION['email'];
-
+@session_start();
 $get_c = "SELECT * from users where email = '$c'";
 
 $run_c = mysqli_query($con, $get_c);
@@ -22,8 +22,8 @@ $customer_id = $row_c['id'];
 					<th class="duyy1" style="text-align: center;">Tổng sản phẩm</th>
 					<th style="text-align: center;">Ngày đặt</th>
 					<th class="duyy1" style="text-align: center;">Thanh toán / chưa thanh toán</th>
-					<th class="duyy1" style="text-align: center;">Trạng thái</th>
-					<th class="duyy1" style="text-align: center;">Chi tiết</th>
+					
+					<th class="duyy1" style="text-align: center;">Tình trạng</th>
 				</tr>	
 				<?php 
 				$get_orders ="select * from customer_order where customer_id='$customer_id'";
@@ -37,9 +37,10 @@ $customer_id = $row_c['id'];
 					$products = $row_orders['total_products'];
 					$date = $row_orders['order_date'];
 					$status = $row_orders['order_status'];
+					$status_chef = $row_orders['status_chef'];
 					$i++;
 					if($status == 'Pending') {
-						$status = 'Chưa thanh toán';
+						$status = 'Đã thanh toán';
 
 					}
 					else {
@@ -53,12 +54,14 @@ $customer_id = $row_c['id'];
 					<td>$products</td>
 					<td>$date</td>
 					<td>$status</td>
-					<td><a href='confirm.php?order_id=$order_id'> Xác nhận thanh toán </td>
-					<td><a href='chitiet.php?chitiet=$order_id'> xem chi tiết đơn hàng </td>
+
+					<td>$status_chef</td>			
 					</tr>";	
 				}
 				?>
 			</table>
+			
 		</div>
+
 	</div>
 </div>

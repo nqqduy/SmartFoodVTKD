@@ -45,7 +45,6 @@ while($fetch_cart = mysqli_fetch_array($run_cart)){
 		$values_qty = $values * $qty;
 
 		$total += $values_qty;
-
 	}	   
 }
 
@@ -70,13 +69,13 @@ else {
 	$sub_total = $total*$qty;
 }
 
-$insert_order = "INSERT into customer_order (order_id, customer_id, due_amount, invoice_no, total_products, order_date, order_status) values ('','$customer_id','$sub_total','$invoice_no','$count_pro',NOW(),'$status')";
+$insert_order = "INSERT into customer_order (order_id, customer_id, due_amount, invoice_no, total_products, order_date, order_status) values ('','$customer_id','$total','$invoice_no','$count_pro',NOW(),'$status')";
 
 $run_order = mysqli_query($con, $insert_order);
 $empty_cart = "DELETE from cart where ip_address='$ip'";
 $run_empty = mysqli_query($con,$empty_cart);
 
-// $insert_to_pending_orders = "INSERT into pending_order (customer_id ,invoice_no, product_id , qty ,order_status) values ('$customer_id','$invoice_no','$product_id','$qty','$status')";
+$insert_to_pending_orders = "INSERT into pending_order (customer_id ,invoice_no, product_id , qty ,order_status) values ('$customer_id','$invoice_no','$product_id','$qty','$status')";
 
 $run_pending_order = mysqli_query($con,$insert_to_pending_orders);
 

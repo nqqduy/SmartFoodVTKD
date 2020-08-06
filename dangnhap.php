@@ -84,7 +84,15 @@ include('function.php');
 
 		$_SESSION['email'] = $email;
 
+		$daubep = $row_login['role'];
+
 		// echo "<script>".strcmp($_SESSION['role'],"admin")."<script>";
+		if($daubep == 'daubep')
+		{
+			echo "login_success";
+            echo "<script> location.href='daubep.php'; </script>";
+            exit;
+		}
 		if (strcmp($_SESSION['role'],"admin") >0){
 			
 			$_SESSION['email'] = $email;
