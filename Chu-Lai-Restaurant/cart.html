@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<title> Giỏ Hàng </title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">  
+	<script type="text/javascript" src="vendor/bootstrap.js"></script>
+	<script type="text/javascript" src="1.js"></script>
+	<link rel="stylesheet" href="vendor/bootstrap.css">
+	<link rel="stylesheet" href="vendor/font-awesome.css">
+	<link rel="stylesheet" href="1.css">
+	<link href="https://fonts.googleapis.com/css2?family=Pridi:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/jquery-3.5.1.min.js">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon" />
+</head>
+<body >	
+	<br>
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">				
+				<a href="sanpham.html">Quay về </a>  <hr>
+			</div>
+		</div>
+	</div>
+	<div class="giohang">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<h3 id ="_quanly" style="width: 100%;"><img src="img/logo.png" alt="" width="70px;">QUẢN LÝ GIỎ HÀNG CỦA BẠN</h3>
+					<br>
+					<h6 id="totalItem" style="color:red">Tổng cộng mặt hàng đã đặt:</h6>
+					<br>
+					<br>
+					<h6 id="totalPrice"  style="color:red">Tổng cộng giá đã đặt:</h6>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<hr>
+	<div class="chitiet" style="text-align: center;">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 ">
+				  <div class="table-responsive">
+                    <div style="overflow-x: scroll">
+                        <table
+                            class="table table-hover table-striped"
+                            style="font-size: 18px"
+                        >
+                            <tr id="dataProduct">
+                                <th style="text-align: center; width: 20%">
+                                    Hình ảnh
+                                </th>
+                                <th style="text-align: center; width: 30%">
+                                    Tên sản phẩm
+                                </th>
+                                <th style="text-align: center; width: 20%">
+                                    Giá tiền
+                                </th>
+                                <th style="text-align: center; width: 10%">
+                                    Số lượng
+                                </th>
+                                <th></th>
+                                <th style="text-align: center; width: 10%">
+                                    <a
+                                        class="btn btn-primary"
+                                        href="add_product.html"
+                                        >Thêm
+                                    </a>
+                                </th>
+                            </tr>
+                            <!-- <div id="render"></div> -->
+                            <!-- <tr>
+                                <td
+                                    style="text-align: center"
+                                    style="text-align: center"
+                                >
+                                    <img
+                                        src="../img/$image"
+                                        style="
+                                            width: 50px;
+                                            height: 50px;
+                                            border: groove #000;
+                                        "
+                                    />
+                                </td>
+                                <td style="text-align: center">
+                                    <input type="text" id="ten" />
+                                </td>
+                                <td style="text-align: center">
+                                    <input type="number" id="gia" />
+                                </td>
+                                <td style="text-align: center">
+                                    <input type="text" id="loaiNhan" />
+                                </td>
+                                <td style="text-align: center">
+                                    <input type="text" id="mota" />
+                                </td>
+                                <td style="text-align: center">
+                                    <input type="number" id="soluong" min="0" />
+                                </td>
+
+                                <td style="text-align: center">
+                                    <button
+                            class="btn btn-info"
+                            style="margin-top: 30px; text-align: right"
+                            onclick="update()"
+                        >
+                            Cập nhật
+                        </button>
+                                </td>
+                            </tr> -->
+                        </table>
+                    </div>
+                </div>
+                
+                <br>
+
+				
+
+				</div>
+			</div>
+			<br>
+			<hr>				
+			
+
+			<br>
+		</div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row">
+                    <div class="col-sm-6"> 
+                        <h4 style="color:rgb(87, 87, 87);" id="" style=" font-size:20px; text-align:right">Voucher khuyến mãi:</h4></div>
+                    <div class="col-sm-3">
+                        <input type="text" style="width:100px; height:20px; text-align:left; margin-top:-20px">
+                    </div>
+                    </div>
+                </div>
+                <br>
+                <div class="col-sm-3">
+                    <button class="btn btn-danger">Thanh toán</button>
+                </div>
+            </div>
+        </div>
+	</div>
+    <br>
+    <br>
+	        <footer id="footer">
+            <p id="copyright">@copyright Chu lai Restaurant</p>
+        </footer>
+
+        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script>
+        <script src="firebase.js"></script>
+        <script src="cart.js"></script>
+</div>
+</body>
+</html>

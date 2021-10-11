@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en"><head>
+	<title> Sản phẩm </title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">  
+	<script type="text/javascript" src="vendor/bootstrap.js"></script>
+	<link rel="stylesheet" href="vendor/bootstrap.css">
+	<link rel="stylesheet" href="vendor/font-awesome.css">
+	<link rel="stylesheet" href="1.css">
+	<link href="https://fonts.googleapis.com/css2?family=Pridi:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon" />
+    
+</head>
+<body >
+	<div class="banner_sanpham">
+		   <nav
+                class="navbar navbar-dark bg-inverse navbar-fixed-top tren"
+                style="background: #ee4d2d !important"
+            >
+                <button
+                    class="navbar-toggler hidden-sm-up"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#exCollapsingNavbar2"
+                >
+                    &#9776;
+                </button>
+                <div
+                    class="collapse navbar-toggleable-xs"
+                    id="exCollapsingNavbar2"
+                >
+                    <a class="navbar-brand logo" href="index.html">
+                        <img src="img/logo.png" alt="" style="width: 40px" />
+                        Chu Lai Restaurant</a
+                    >
+                    <ul class="nav navbar-nav float-sm-right trenphai">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="index.html"
+                                >Trang chủ
+                                <span class="sr-only">(current)</span></a
+                            >
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="sanpham.html">Sản phẩm</a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="taikhoan.html"
+                                id="taikhoan"
+                            ></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+	</div>
+	<br>
+	<br>
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">				
+				<a href="index.html">Trang chủ</a> >> Sản phẩm
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div id="form" style="margin-top: 20px;">
+				<form action="ketqua.html" method="get" accept-charset="utf-8" enctype="multipart/form-data">
+					<input type="van ban" name="user_query" value="" placeholder="Tìm kiếm sản phẩm" style="padding: 8px;">
+					<input type="submit" name="search"value="Search" style="padding: 8px;">
+				</form>
+			</div>
+
+
+
+	</div>
+
+</div>
+<br>
+<div class="container">
+	<div class="col-sm-3">
+		<a href="cart.html" style="display: block; color:rgb(57, 58, 58)"><i class="fa fa-shopping-cart" style="font-size:20px;"> Quản lý giỏ hàng</i></a>
+	</div>
+</div>
+<div class="menu">
+	<h1 style="text-align: center;"> THỰC PHẨM VÀ ĐỒ UỐNG</h1>
+</div>
+<br>
+<br>
+<hr>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-3">
+            <div class="div">
+                <h4 style="text-align:center">MỤC LỤC SẢN PHẨM</h4>
+                <ul>
+                    <li><button class="btn btn-default sp" id="tatca">Tất cả</button></li>
+                    <li><button class="btn btn-default sp" id="banh">Bánh</button></li>
+                    <li><button class="btn btn-default sp" id="mi">Mì - Bún</button></li>
+                    <li><button class="btn btn-default sp" id="nuocuong">Nước uống </button></li>
+                    <li><button class="btn btn-default sp" id="com">Cơm </button></li>
+                    <li><button class="btn btn-default sp" id="anvat">Ăn vặt</button></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="row"  id="render">
+                
+            </div>
+        </div>
+	</div>
+</div>
+        <footer id="footer">
+            <p id="copyright">@copyright Chu lai Restaurant</p>
+        </footer>
+</div>
+</div>
+
+        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script>
+        <script src="firebase.js"></script>
+        <script src="sanpham.js"></script>
+</body>
+</html>

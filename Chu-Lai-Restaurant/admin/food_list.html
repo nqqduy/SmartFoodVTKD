@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Quản lý thực phẩm</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="style/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="style/css/k.css" rel="stylesheet" />
+        <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button
+                        type="button"
+                        class="navbar-toggle navbar-toggle-sidebar collapsed"
+                    >
+                        MENU
+                    </button>
+                    <button
+                        type="button"
+                        class="navbar-toggle collapsed"
+                        data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1"
+                    >
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#" style="font-size: 24px">
+                        Admin Panel
+                    </a>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+        <div class="container-fluid main-container">
+            <div class="col-md-2 sidebar" style="margin-left: 20px">
+                <div class="row">
+                    <div class="absolute-wrapper"></div>
+                    <!-- Menu -->
+                    <div class="side-menu">
+                        <nav class="navbar navbar-default" role="navigation">
+                            <!-- Main Menu -->
+                            <div class="side-menu-container">
+                                <ul class="nav navbar-nav">
+                                    <li>
+                                        <button
+                                            style="width: 240px; height: 50px"
+                                            type="button"
+                                            class="btn btn-default btn-primary"
+                                            onClick="location.href='index.html'"
+                                        >
+                                            <span
+                                                class="
+                                                    glyphicon glyphicon-home
+                                                    pull-left
+                                                "
+                                            ></span>
+                                            Trang chính
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                        <button
+                                            style="width: 240px; height: 50px"
+                                            type="button"
+                                            class="btn btn-default btn-primary"
+                                            onClick="location.href='#'"
+                                        >
+                                            <span
+                                                class="
+                                                    glyphicon glyphicon-edit
+                                                    pull-left
+                                                "
+                                            ></span>
+                                            Khách hàng
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                        <button
+                                            style="width: 240px; height: 50px"
+                                            type="button"
+                                            class="btn btn-default btn-success"
+                                            onClick="location.href='orders.html'"
+                                        >
+                                            <span
+                                                class="
+                                                    glyphicon glyphicon-edit
+                                                    pull-left
+                                                "
+                                            ></span>
+                                            Đơn hàng
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                        <button
+                                            style="width: 240px; height: 50px"
+                                            type="button"
+                                            class="btn btn-default btn-primary"
+                                            onClick="location.href='add_product.html'"
+                                        >
+                                            <span
+                                                class="
+                                                    glyphicon glyphicon-edit
+                                                    pull-left
+                                                "
+                                            ></span>
+                                            Thêm sản phẩm
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button
+                                            style="width: 240px; height: 50px"
+                                            type="button"
+                                            class="
+                                                btn btn-default
+                                                dropdown-toggle
+                                                btn-primary
+                                            "
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                        >
+                                            <span
+                                                class="
+                                                    glyphicon glyphicon-edit
+                                                    pull-left
+                                                "
+                                            ></span>
+                                            Danh sách sản phẩm
+                                            <span
+                                                class="
+                                                    glyphicon
+                                                    glyphicon-triangle-bottom
+                                                    pull-right
+                                                "
+                                            ></span>
+                                        </button>
+                                        <ul
+                                            class="dropdown-menu"
+                                            style="width: 240px"
+                                        >
+                                            <li>
+                                                <a href="food_list.html"
+                                                    ><strong
+                                                        >Đồ ăn và thức
+                                                        uống</strong
+                                                    >
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <button
+                                            style="width: 240px; height: 50px"
+                                            type="button"
+                                            class="btn btn-default btn-primary"
+                                            onClick="location.href='manage_users.html'"
+                                        >
+                                            <span
+                                                class="
+                                                    glyphicon glyphicon-edit
+                                                    pull-left
+                                                "
+                                            ></span>
+                                            Quản lý tài khoản
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button
+                                            style="width: 240px; height: 50px"
+                                            type="button"
+                                            class="btn btn-default btn-danger"
+                                            onclick="logout()"
+                                        >
+                                            <span
+                                                class="
+                                                    glyphicon glyphicon-off
+                                                    pull-left
+                                                "
+                                            >
+                                            </span>
+                                            Đăng xuất
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 content" style="margin-left: 10px">
+                <div class="panel-heading" style="background-color: #c4e17f">
+                    <h1>Đồ ăn và thức uống</h1>
+                </div>
+                <br />
+                <div class="table-responsive">
+                    <div style="overflow-x: scroll">
+                        <table
+                            class="table table-hover table-striped"
+                            style="font-size: 18px"
+                        >
+                            <tr id="dataProduct">
+                                <th style="text-align: center; width: 10%">
+                                    Hình ảnh
+                                </th>
+                                <th style="text-align: center; width: 20%">
+                                    Tên sản phẩm
+                                </th>
+                                <th style="text-align: center; width: 10%">
+                                    Giá tiền
+                                </th>
+                                <th style="text-align: center; width: 15%">
+                                    Loại - nhãn
+                                </th>
+                                <th style="text-align: center; width: 20%">
+                                    Mô tả
+                                </th>
+                                <th style="text-align: center; width: 10%">
+                                    Số lượng
+                                </th>
+                                <th></th>
+                                <th style="text-align: center; width: 10%">
+                                    <a
+                                        class="btn btn-primary"
+                                        href="add_product.html"
+                                        >Thêm
+                                    </a>
+                                </th>
+                            </tr>
+                            <!-- <div id="render"></div> -->
+                            <!-- <tr>
+                                <td
+                                    style="text-align: center"
+                                    style="text-align: center"
+                                >
+                                    <img
+                                        src="../img/$image"
+                                        style="
+                                            width: 50px;
+                                            height: 50px;
+                                            border: groove #000;
+                                        "
+                                    />
+                                </td>
+                                <td style="text-align: center">
+                                    <input type="text" id="ten" />
+                                </td>
+                                <td style="text-align: center">
+                                    <input type="number" id="gia" />
+                                </td>
+                                <td style="text-align: center">
+                                    <input type="text" id="loaiNhan" />
+                                </td>
+                                <td style="text-align: center">
+                                    <input type="text" id="mota" />
+                                </td>
+                                <td style="text-align: center">
+                                    <input type="number" id="soluong" min="0" />
+                                </td>
+
+                                <td style="text-align: center">
+                                    <button
+                            class="btn btn-info"
+                            style="margin-top: 30px; text-align: right"
+                            onclick="update()"
+                        >
+                            Cập nhật
+                        </button>
+                                </td>
+                            </tr> -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('.navbar-toggle-sidebar').click(function () {
+                    $('.navbar-nav').toggleClass('slide-in');
+                    $('.side-body').toggleClass('body-slide-in');
+                    $('#search')
+                        .removeClass('in')
+                        .addClass('collapse')
+                        .slideUp(200);
+                });
+
+                $('#search-trigger').click(function () {
+                    $('.navbar-nav').removeClass('slide-in');
+                    $('.side-body').removeClass('body-slide-in');
+                    $('.search-input').focus();
+                });
+            });
+        </script>
+        <script src="style/js/jquery-1.11.1.min.js"></script>
+        <script src="style/js/bootstrap.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+        <script src="../firebase.js"></script>
+        <script src="food_list.js"></script>
+    </body>
+</html>

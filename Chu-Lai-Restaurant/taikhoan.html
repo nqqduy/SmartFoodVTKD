@@ -1,11 +1,6 @@
-<?php 
-include('db.php');
-include('function.php');
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en"><head>
-	<title> Example </title>
+	<title> Tài khoản </title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">  
 	<script type="text/javascript" src="vendor/bootstrap.js"></script>
@@ -14,38 +9,35 @@ session_start();
 	<link rel="stylesheet" href="vendor/font-awesome.css">
 	<link rel="stylesheet" href="1.css">
 	<link href="https://fonts.googleapis.com/css2?family=Pridi:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+        <link
+            rel="shortcut icon"
+            href="img/logo.png"
+            type="image/x-icon"
+        />
 </head>
 <body >
 	<div class="banner_sanpham"> <!-- menu -->
-		<nav class="navbar navbar-dark bg-inverse navbar-fixed-top tren">
+		  <nav
+                class="navbar navbar-dark bg-inverse navbar-fixed-top tren"
+                style="background: #ee4d2d !important"
+            >
 			<button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
 				&#9776;
 			</button>
 			<div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-			<a class="navbar-brand logo" href="index.php"> <img src="img/logo.png" alt="" style="width: 40px;"> SMART FOOD COURT SYSTEM</a>
+			<a class="navbar-brand logo" href="index.html"> <img src="img/logo.png" alt="" style="width: 40px;">Chu Lai Restaurant</a>
 				<ul class="nav navbar-nav float-sm-right trenphai">
 					<li class="nav-item ">
-						<a class="nav-link" href="index.php">Trang chủ <span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="index.html">Trang chủ <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item ">
-						<a class="nav-link" href="sanpham.php">Sản phẩm</a>
+						<a class="nav-link" href="sanpham.html">Sản phẩm</a>
 					</li>
 					<!-- <li class="nav-item">
 						<a class="nav-link" href="quanly.php">Quản lý</a>
 					</li> -->
 					<li class="nav-item active">
-						<?php
-						if(isset($_SESSION['email'])){
-							echo"<a class='nav-link' href='taikhoan.php'>Tài khoản</a>";
-						}
-						?>
-					</li>	
-					<li class="nav-item ">
-						<?php
-						if(isset($_SESSION['email'])){
-							echo"<a class='nav-link' href='dangxuat.php'>Đăng xuất</a>";
-						}
-						?>
+						<a class='nav-link' href='taikhoan.html'>Tài khoản</a>
 					</li>	
 				</ul>
 			</div>
@@ -55,19 +47,9 @@ session_start();
 	<br>
 	<br>
 	<br>
-	<?php 
-		$user_session = $_SESSION['email'];
+	
 
-		$get_customer_pic = "SELECT * FROM users where email = '$user_session'";
-		$run_customer = mysqli_query($con,$get_customer_pic);
-
-		$row_customer = mysqli_fetch_array($run_customer);
-
-		$customer_pic = $row_customer['image'];
-		$customer_email = $row_customer['email'];
-		$customer_name = $row_customer['name'];
-
-		echo "<div id='quanlytaikhoan'> <!-- taikhoan  -->
+		<div id='quanlytaikhoan'> <!-- taikhoan  -->
 		<div class='container'>
 		<div class='row'>
 		<h4 style='color:#f47724;' id= '_info'>Thông tin khách hàng</h4>
@@ -100,8 +82,8 @@ session_start();
 		<div class='col-sm-3 _email2'>
 		<p style='color:black; font-size: 16px;'>$customer_email</p>
 		</div>
-		</div>";
-	?>
+		</div>
+	
 	<div class="row">
 
 	</div>
@@ -147,33 +129,7 @@ session_start();
 <hr>
 <br>
 <div class="box">
-	
-	
-	<?php 
-	
-		if(isset($_GET['dat_hang']))
-		{
-			include("my_order.php");
 
-				
-			
-		}
-		if(isset($_GET['edit_taikhoan']))
-		{
-			include("edit_taikhoan.php");
-		}
-		if(isset($_GET['thay_pass']))
-		{
-			include("change_pass.php");
-		}
-		if(isset($_GET['xoa_tai_khoan']))
-		{
-			include("delete_taikhoan.php");
-		}
-
-
-
-	 ?>
 </div>
 <br>
 <br>
@@ -189,8 +145,5 @@ session_start();
 <br>
 <br>
 <br>
-<?php 
-include("footer.php");
-?>
 </body>
 </html>

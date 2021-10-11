@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Thêm sản phẩm</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="style/css/bootstrap.min.css" rel="stylesheet">
+<link href="style/css/k.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<link rel="shortcut icon" href="../img/logo.png" type="image/x-icon" />
+</head>
+<body>
+ 
+   <nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+	<div class="navbar-header">
+			<button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed">
+			MENU
+			</button>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#" style="font-size:24px">
+				Admin Panel	</a>
+        </div>
+  </div><!-- /.container-fluid -->
+	</nav>
+   	<div class="container-fluid">
+	<div class="col-md-2 sidebar" style="margin-left:20px">
+  			<div class="row">
+	<div class="absolute-wrapper"> </div>
+	<!-- Menu -->
+	<div class="side-menu">
+		<nav class="navbar navbar-default" role="navigation">
+			<!-- Main Menu -->
+			<div class="side-menu-container">
+			  <ul class="nav navbar-nav">
+                <li><button style="width:240px; height:50px" type="button" class="btn btn-default btn-primary" onClick="location.href='index.html'"><span class="glyphicon  glyphicon-home pull-left"></span> Trang chính </button></li> 
+
+                <li><button style="width:240px; height:50px" type="button" class="btn btn-default btn-primary" onClick="location.href='#'"><span class="glyphicon glyphicon-edit pull-left"></span> Khách hàng </button></li>
+
+                <li><button style="width:240px; height:50px" type="button" class="btn btn-default btn-success" onClick="location.href='orders.html'"> <span class="glyphicon glyphicon-edit pull-left"></span> Đơn hàng </button></li>
+                
+                <li><button style="width:240px; height:50px" type="button" class="btn btn-default btn-primary" onClick="location.href='add_product.html'"> <span class="glyphicon glyphicon-edit pull-left"></span> Thêm sản phẩm </button></li>
+                <li>
+                <button style="width:240px; height:50px" type="button" class="btn btn-default dropdown-toggle btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="glyphicon glyphicon-edit pull-left"></span>  Danh sách sản phẩm <span class="glyphicon glyphicon-triangle-bottom pull-right"></span>
+                </button>
+                <ul class="dropdown-menu" style="width:240px">
+                    <li><a href="food_list.html"><strong>Đồ ăn và thức uống</strong> </a></li>
+              
+                </ul></li>
+                <li><button style="width:240px; height:50px" type="button" class="btn btn-default btn-primary" onClick="location.href='manage_users.html'"> <span class="glyphicon glyphicon-edit pull-left"></span> Quản lý tài khoản </button></li>	  
+                <li><button style="width:240px; height:50px" type="button" class="btn btn-default btn-danger"   onclick="logout()"><span class="glyphicon glyphicon-off pull-left">
+                </span> Đăng xuất </button></li>
+			  </ul>
+		  </div>
+		</nav>
+        </div>
+</div></div>
+    <div class="col-md-9 content" style="margin-left:10px">
+  	<div class="panel panel-default">
+	<div class="panel-heading" style="background-color:#c4e17f">
+	<h1><span class="glyphicon glyphicon-tag"></span> Thêm sản phẩm  </h1></div><br>
+	<div class="panel-body" style="background-color:#E6EEEE;">
+		<div class="col-lg-7">
+        <div class="well">
+        <form action="" method="post" name="form" id="form">
+        <p>Tên sản phẩm</p>
+        <input class="input-lg thumbnail form-control" type="text" name="product_title" id="product_title" autofocus style="width:100%" placeholder="Tên sản phẩm" required>
+        <p>Mô tả sản phẩm</p>
+        <textarea class="thumbnail form-control" name="product_desc" id="product_desc" style="width:100%; height:100px" placeholder="Viết gì đó về sản phẩm ..." required></textarea>
+        <p>Hình ảnh minh họa</p>
+        <div style="background-color:#CCC">
+            <input type="file" style="width:100%" name="picture" class="btn thumbnail" id="picture" />
+        </div>
+
+    </div>
+            <div class="well">
+                <h3>Giá sản phẩm</h3>
+                <p>Giá</p>
+                <div class="input-group">
+                    <div class="input-group-addon">VNĐ</div>
+                    <input type="number" class="form-control" name="product_price" id="product_price"  placeholder="69.969" required>
+                    </div><br>
+
+
+            </div>
+        </div>  
+        <div class="col-lg-5">
+        <div class="well">
+                <h3>Category</h3>  
+                <p>Phân loại sản phẩm</p>
+                <!-- <input type="number" name="product_cat" id="product_cat" class="form-control" placeholder="1 Đồ ăn, 2 Thức uống" min="1" max="2"> -->
+                <select name="product_cat" id="product_cat" style="padding: 5px; ">
+                    <option value="doan">Đồ ăn</option>
+                    <option value="thucuong">Thức uống</option>
+                </select>
+                <br>
+                <br>
+                <p>Nhãn sản phẩm</p>
+                <!-- <input type="number" name="product_brand" id="product_brand" class="form-control" placeholder="1 Mì, 2 Bánh, 3 Nước, 4 Cơm, 5 Ăn vặt" min="1" max="5"> -->
+                <select name="cars" id="product_brand" style="padding: 5px; ">
+                    <option value="mi">Mì - Bún</option>
+                    <option value="com">cơm</option>
+                    <option value="banh">Bánh</option>
+                    <option value="anvat">Ăn vặt</option>
+                    <option value="nuoc">Nước uống</option>
+                </select>
+               
+        </div>              
+        </div>
+
+<div align="center">
+    <button type="submit" name="submit"  class="btn btn-default" style="width:100px; height:60px"  onClick="location.href='index.html'"> Cancel</button>
+    <button type="submit" name="submit" id="submit" class="btn btn-success" style="width:150px; height:60px"> Add Product</button>
+</div>
+</form>
+    <p style="text-align: center; color: red; padding-top: 20px" id="error"></p>
+    <p style="text-align: center; color: green; padding-top: 20px" id="success"></p>
+	</div>
+</div></div></div>
+    <script type="text/javascript">
+    $(function () {
+        $('.navbar-toggle-sidebar').click(function () {
+            $('.navbar-nav').toggleClass('slide-in');
+            $('.side-body').toggleClass('body-slide-in');
+            $('#search').removeClass('in').addClass('collapse').slideUp(200);
+        });
+
+        $('#search-trigger').click(function () {
+            $('.navbar-nav').removeClass('slide-in');
+            $('.side-body').removeClass('body-slide-in');
+            $('.search-input').focus();
+        });
+    });
+        </script>
+        <script src="style/js/jquery-1.11.1.min.js"></script>
+        <script src="style/js/bootstrap.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-storage.js"></script>
+        <script src="../firebase.js"></script>
+        <script src="add_product.js"></script>
+</body>
+</html>
